@@ -1,0 +1,1924 @@
+.song {
+  &--search {
+    margin-top: get_vw(50);
+    position: sticky;
+    top: -75vw;
+    z-index: 100;
+
+    @include min-screen() {
+      margin-top: get_vw(50, 1100);
+      top: get_vw(-460, 1100);
+    }
+
+    @include min-screen(1100px) {
+      margin-top: 50px;
+      top: calc(-460px - 0.2vw);
+    }
+
+    @include min-screen(1400px) {
+      top: -458px;
+    }
+
+    &:before,
+    &:after {
+      display: none;
+    }
+
+    &__text {
+      font-size: get_vw(20);
+      text-align: center;
+      line-height: 1.5;
+
+      @include min-screen() {
+        font-size: get_vw(14, 1100);
+      }
+
+      @include min-screen(1100px) {
+        font-size: 14px;
+      }
+    }
+
+    &__btn {
+      width: get_vw(600);
+      height: get_vw(95);
+      margin: get_vw(40) auto;
+      border-radius: get_vw(100);
+      background-color: $color_songBtn;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      @include songs_bg();
+
+      &.new {
+        & .song--search__btn__text {
+          width: get_vw(235);
+        }
+      }
+
+      &.pops_anime {
+        & .song--search__btn__text {
+          width: get_vw(267);
+        }
+      }
+
+      &.niconico {
+        & .song--search__btn__text {
+          width: get_vw(234);
+        }
+      }
+
+      &.toho {
+        & .song--search__btn__text {
+          width: get_vw(218);
+        }
+      }
+
+      &.variety {
+        & .song--search__btn__text {
+          width: get_vw(160);
+        }
+      }
+
+      &.maimai {
+        & .song--search__btn__text {
+          width: get_vw(139);
+        }
+      }
+
+      &.gekichu {
+        & .song--search__btn__text {
+          width: get_vw(200);
+        }
+      }
+
+      &.utage {
+        & .song--search__btn__text {
+          width: get_vw(108);
+        }
+      }
+
+      &.on {
+        &:after {
+          transform: scale(1, -1);
+        }
+      }
+
+      &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        background-image: url(../img/song/arrow.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: get_vw(20);
+        height: get_vw(18);
+        right: get_vw(36);
+      }
+
+      @include min-screen() {
+        display: none;
+      }
+
+      &__text {
+
+        & svg {
+          fill: $color-songText;
+          fill-rule: evenodd;
+          height: get_vw(32);
+
+          @include min-screen() {
+            height: get_vw(18, 1100);
+          }
+
+          @include min-screen(1100px) {
+            height: 18px;
+          }
+        }
+      }
+    }
+
+    &__list {
+      display: none;
+      width: get_vw(600);
+      margin-top: get_vw(-20) !important;
+      left: 50%;
+      transform: translateX(-50%);
+      position: absolute;
+      box-sizing: border-box;
+      background-color: #242424;
+      z-index: 200;
+      text-align: center;
+      color: #fff;
+      font-size: get_vw(28);
+      font-weight: 900;
+      padding: get_vw(20) get_vw(50);
+    }
+
+    &__item {
+      padding: get_vw(40) 0;
+
+      &:not(:first-child) {
+        border-top: 1px solid #707070;
+      }
+    }
+
+    &__check {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      @include min-screen() {
+        margin-top: get_vw(30, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin-top: 30px;
+      }
+
+      &.bt {
+        @include min-screen() {
+          width: get_vw(600, 1100);
+          margin: 0 auto;
+        }
+
+        @include min-screen(1100px) {
+          width: 500px;
+        }
+
+        &>label {
+          &:nth-child(n+4) {
+            margin-top: get_vw(30);
+
+            @include min-screen() {
+              margin-top: get_vw(15, 1100);
+            }
+
+            @include min-screen(1100px) {}
+          }
+
+          &:not(:first-child) {
+            margin-left: get_vw(20);
+
+            @include min-screen() {
+              margin-left: get_vw(30, 1100);
+            }
+
+            @include min-screen(1100px) {
+              margin-left: 30px;
+            }
+          }
+        }
+      }
+
+      &>label {
+        &:not(:first-child) {
+          margin-left: get_vw(35);
+
+          @include min-screen() {
+            margin-left: get_vw(45, 1100);
+          }
+
+          @include min-screen(1100px) {
+            margin-left: 45px;
+          }
+        }
+      }
+
+      &__input {
+        display: none;
+
+        &:checked+.song--search__check__text {
+          &:before {
+            background-color: $color-songCheck;
+            border: get_vw(6) solid $color-songCheck;
+          }
+
+          &:after {
+            display: block;
+          }
+        }
+      }
+
+
+      &__text {
+        display: flex;
+        align-items: center;
+        position: relative;
+
+        &::before {
+          box-sizing: border-box;
+          content: "";
+          display: block;
+          width: get_vw(40);
+          height: get_vw(40);
+          border: get_vw(6) solid #e5e5e5;
+          border-radius: get_vw(5);
+
+          @include min-screen() {
+            width: get_vw(30, 1100);
+            height: get_vw(30, 1100);
+            border: get_vw(4, 1100) solid #e5e5e5;
+            border-radius: get_vw(5, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 30px;
+            height: 30px;
+            border-width: 4px;
+            border-radius: 5px;
+          }
+        }
+
+        &:after {
+          box-sizing: border-box;
+          content: "";
+          display: none;
+          position: absolute;
+          left: get_vw(6);
+          background-image: url(../img/song/check.svg);
+          background-size: contain;
+          background-repeat: no-repeat;
+          width: get_vw(27);
+          height: get_vw(23);
+
+          @include min-screen() {
+            width: get_vw(20, 1100);
+            height: get_vw(16, 1100);
+            left: get_vw(6, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 20px;
+            height: 16px;
+            left: 6px;
+          }
+        }
+
+        &>span {
+          display: flex;
+          align-items: center;
+          width: get_vw(160);
+          height: get_vw(33);
+          margin-left: get_vw(20);
+
+          @include min-screen() {
+            width: get_vw(117, 1100);
+            height: get_vw(30, 1100);
+            margin-left: get_vw(10, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 117px;
+            height: 30px;
+            margin-left: 10px;
+          }
+
+          &.re {
+            width: get_vw(179);
+
+            @include min-screen() {
+              width: get_vw(124, 1100);
+
+            }
+
+            @include min-screen(1100px) {
+              width: 124px;
+            }
+          }
+
+          &.ba {
+            width: get_vw(100);
+            height: get_vw(30);
+            margin-left: get_vw(10);
+
+            @include min-screen() {
+              width: get_vw(77, 1100);
+              height: get_vw(20, 1100);
+              margin-left: get_vw(10, 1100);
+            }
+
+            @include min-screen(1100px) {
+              width: 77px;
+              height: 20px;
+              margin-left: 10px;
+            }
+          }
+
+          &.bas {
+            width: get_vw(180);
+            height: get_vw(32);
+            margin-left: get_vw(10);
+
+            @include min-screen() {
+              width: get_vw(141, 1100);
+              height: get_vw(20, 1100);
+              margin-left: get_vw(10, 1100);
+            }
+
+            @include min-screen(1100px) {
+              width: 141px;
+              height: 20px;
+              margin-left: 10px;
+            }
+          }
+
+          &.ex {
+            width: get_vw(130);
+            height: get_vw(30);
+            margin-left: get_vw(10);
+
+            @include min-screen() {
+              width: get_vw(100, 1100);
+              height: get_vw(20, 1100);
+              margin-left: get_vw(10, 1100);
+            }
+
+            @include min-screen(1100px) {
+              width: 100px;
+              height: 20px;
+              margin-left: 10px;
+            }
+          }
+
+          &.ma {
+            width: get_vw(140);
+            height: get_vw(30);
+            margin-left: get_vw(10);
+
+            @include min-screen() {
+              width: get_vw(100, 1100);
+              height: get_vw(20, 1100);
+              margin-left: get_vw(10, 1100);
+            }
+
+            @include min-screen(1100px) {
+              width: 100px;
+              height: 20px;
+              margin-left: 10px;
+            }
+          }
+
+          &.re {
+            width: get_vw(210);
+            height: get_vw(30);
+            margin-left: get_vw(10);
+
+            @include min-screen() {
+              width: get_vw(140, 1100);
+              height: get_vw(20, 1100);
+              margin-left: get_vw(10, 1100);
+            }
+
+            @include min-screen(1100px) {
+              width: 140px;
+              height: 20px;
+              margin-left: 10px;
+            }
+          }
+        }
+      }
+    }
+
+    &__nav {
+      display: none;
+
+      @include min-screen() {
+        width: get_vw(850, 1100);
+        margin: get_vw(30, 1100) auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+
+      @include min-screen(1100px) {
+        width: 850px;
+        margin: 30px auto 30px;
+      }
+
+      &__item {
+        @include min-screen() {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: get_vw(200, 1100);
+          height: get_vw(80, 1100);
+          background-color: $color_songBtn;
+          border-radius: 100px;
+          transition: 300ms;
+          cursor: pointer;
+        }
+
+        @include min-screen(1100px) {
+          width: 200px;
+          height: 80px;
+        }
+
+        &.on,
+        &:hover {
+          @include songs_bg();
+        }
+
+
+        &:nth-child(n+5) {
+          @include min-screen() {
+            margin-top: get_vw(10, 1100);
+          }
+
+          @include min-screen(1100px) {
+            margin-top: 10px;
+          }
+        }
+
+        &:not(:nth-child(4n+1)) {
+          @include min-screen() {
+            margin-left: get_vw(15, 1100);
+          }
+
+          @include min-screen(1100px) {
+            margin-left: 15px;
+          }
+        }
+      }
+
+      &__img {
+        @include min-screen() {
+          height: get_vw(19, 1100);
+        }
+
+        @include min-screen(1100px) {
+          height: 19px;
+        }
+
+        &.i01 {
+          @include min-screen() {
+            width: get_vw(130, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 130px;
+          }
+        }
+
+        &.i02 {
+          @include min-screen() {
+            width: get_vw(149, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 149px;
+          }
+        }
+
+        &.i03 {
+          @include min-screen() {
+            width: get_vw(142, 1100);
+            height: get_vw(46, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 142px;
+            height: 46px;
+          }
+        }
+
+        &.i04 {
+          @include min-screen() {
+            width: get_vw(121, 1100);
+            height: get_vw(22, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 121px;
+            height: 22px;
+          }
+        }
+
+        &.i05 {
+          @include min-screen() {
+            width: get_vw(101, 1100);
+            height: get_vw(46, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 101px;
+            height: 46px;
+          }
+        }
+
+        &.i06 {
+          @include min-screen() {
+            width: get_vw(77, 1100);
+            height: get_vw(17, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 77px;
+            height: 17px;
+          }
+        }
+
+        &.i07 {
+          @include min-screen() {
+            width: get_vw(123, 1100);
+            height: get_vw(46, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 123px;
+            height: 46px;
+          }
+        }
+
+        &.i08 {
+          @include min-screen() {
+            width: get_vw(57, 1100);
+            height: get_vw(21, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 57px;
+            height: 21px;
+          }
+        }
+      }
+    }
+
+    &__input {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: get_vw(45);
+
+      @include min-screen() {
+        margin-top: 0;
+      }
+
+      &:before {
+        display: block;
+        content: "";
+        background-image: url(../img/song/search_lens.svg);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: get_vw(50);
+        height: get_vw(50);
+        left: get_vw(70);
+        position: absolute;
+        z-index: 10;
+
+        @include min-screen() {
+          width: get_vw(30, 1100);
+          height: get_vw(30, 1100);
+          left: get_vw(10, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 30px;
+          height: 30px;
+          left: 10px;
+        }
+      }
+
+      & .clear {
+        display: block;
+        content: "";
+        background-image: url(../img/song/search_del.png);
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: get_vw(50);
+        height: get_vw(50);
+        position: absolute;
+        right: get_vw(70);
+        z-index: 10;
+        cursor: pointer;
+
+        @include min-screen() {
+          width: get_vw(30, 1100);
+          height: get_vw(30, 1100);
+          right: get_vw(10, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 30px;
+          height: 30px;
+          right: 10px;
+        }
+      }
+
+      input {
+        position: relative;
+        width: get_vw(600);
+        height: get_vw(90);
+        border-radius: 100px;
+        background-color: #eeeeee;
+        margin: 0 auto;
+        font-size: get_vw(36);
+        padding: 0 get_vw(80);
+        display: block;
+        font-weight: 900;
+
+        &::placeholder {
+          font-size: get_vw(18);
+          font-weight: normal;
+        }
+
+        @include min-screen() {
+          width: get_vw(447, 1100);
+          height: get_vw(40, 1100);
+          font-size: get_vw(20, 1100);
+          font-weight: 900;
+
+          &::placeholder {
+            font-size: get_vw(14, 1100);
+            font-weight: normal;
+          }
+
+          padding: 0 get_vw(50, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 447px;
+          height: 40px;
+          font-weight: 900;
+          font-size: 20px;
+
+          &::placeholder {
+            font-size: 14px;
+            font-weight: normal;
+          }
+
+          padding: 0 50px;
+        }
+      }
+    }
+
+    &__attention {
+      margin: get_vw(20) auto 0;
+      padding: 0 get_vw(50);
+
+      @include min-screen() {
+        margin: 0;
+        padding: 0;
+        margin-left: get_vw(25, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin-left: 25px;
+      }
+
+      &__text {
+        font-size: get_vw(20);
+        padding-left: 1em;
+        text-indent: -1em;
+        display: flex;
+        align-items: center;
+        line-height: 1.5;
+
+        &:not(:first-child) {
+          margin-top: get_vw(10);
+
+          @include min-screen() {
+            margin-top: get_vw(2, 1100);
+          }
+
+          @include min-screen(1100px) {
+            margin-top: 2px;
+          }
+        }
+
+        @include min-screen() {
+          font-size: get_vw(12, 1100);
+        }
+
+        @include min-screen(1100px) {
+          font-size: 12px;
+        }
+      }
+
+      &__key {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: get_vw(30);
+        margin: 0 get_vw(26) 0 get_vw(4);
+
+        @include min-screen() {
+          width: get_vw(20, 1100);
+          margin: 0 get_vw(14, 1100) 0 get_vw(2, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 20px;
+          margin: 0 14px 0 2px;
+        }
+      }
+    }
+
+    &__box {
+      @include min-screen() {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: get_vw(25, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin-top: 25px;
+      }
+    }
+
+    &__open {
+      position: absolute;
+      width: 100%;
+      margin: get_vw(40) 0 get_vw(-66);
+      height: get_vw(90);
+      font-size: get_vw(36);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-weight: 900;
+      background-color: $color-songOpen;
+      position: relative;
+      border-radius: 0 0 get_vw(30) get_vw(30);
+      z-index: 100;
+      transition: 300ms;
+      cursor: pointer;
+
+      &.open {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      @include min-screen() {
+        margin: get_vw(40, 1100) 0 get_vw(-51, 1100);
+        height: get_vw(60, 1100);
+        font-size: get_vw(26, 1100);
+        border-radius: 0 0 get_vw(30, 1100) get_vw(30, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin: 40px 0 -52px;
+        height: 60px;
+        font-size: 26px;
+        border-radius: 0 0 30px 30px;
+      }
+
+      &:after {
+        display: block;
+        content: "";
+        position: absolute;
+        right: get_vw(30);
+        width: get_vw(50);
+        height: get_vw(50);
+        background-image: url(../img/song/plus.png);
+        background-size: cover;
+
+        @include min-screen() {
+          right: get_vw(290, 1100);
+          width: get_vw(30, 1100);
+          height: get_vw(30, 1100);
+        }
+
+        @include min-screen(1100px) {
+          right: 290px;
+          width: 30px;
+          height: 30px;
+        }
+      }
+    }
+
+    &__detail {
+      padding: 0 get_vw(50);
+      position: relative;
+      display: none;
+
+      @include min-screen() {
+        padding: 0 get_vw(25, 1100);
+      }
+
+      @include min-screen(1100px) {
+        padding: 0 25px;
+      }
+    }
+
+    &__border {
+      width: 100%;
+      height: get_vw(6);
+      border-radius: 100px;
+      background-color: #e5e5e5;
+
+      @include min-screen() {
+        height: get_vw(6, 1100);
+
+      }
+
+      @include min-screen(1100px) {
+        height: 6px;
+      }
+    }
+
+    &__inner {
+      margin-top: get_vw(40);
+
+      @include min-screen() {
+        margin-top: get_vw(40, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin-top: 40px;
+      }
+    }
+
+    &__lv {
+      margin-top: get_vw(30);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      @include min-screen() {
+        margin-top: get_vw(30, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin-top: 30px;
+      }
+
+      &__btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        font-weight: 900;
+        width: get_vw(110);
+        height: get_vw(90);
+        border-radius: get_vw(10);
+        background-color: #4b4b4b;
+        font-size: get_vw(30);
+
+        @include min-screen() {
+          width: get_vw(55, 1100);
+          height: get_vw(45, 1100);
+          border-radius: get_vw(10, 1100);
+          font-size: get_vw(18, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 55px;
+          height: 45px;
+          border-radius: 10px;
+          font-size: 18px;
+        }
+
+        &.on {
+          background-color: $color-songOpen;
+        }
+
+        @include max-screen() {
+          &:not(:nth-child(5n+1)) {
+            margin-left: get_vw(12);
+          }
+
+          &:nth-child(n+6) {
+            margin-top: get_vw(15);
+          }
+        }
+
+        @include min-screen() {
+          &:not(:nth-child(14n+1)) {
+            margin-left: get_vw(6, 1100);
+          }
+
+          &:nth-child(n+15) {
+            margin-top: get_vw(12, 1100);
+          }
+        }
+
+        @include min-screen(1100px) {
+          &:not(:nth-child(14n+1)) {
+            margin-left: 6px;
+          }
+
+          &:nth-child(n+15) {
+            margin-top: 12px;
+          }
+        }
+      }
+    }
+
+    &__select {
+      margin-top: get_vw(30);
+      display: flex;
+      justify-content: space-between;
+
+      @include min-screen() {
+        width: get_vw(430, 1100);
+        margin: get_vw(30) auto 0;
+      }
+
+      @include min-screen(1100px) {
+        width: 430px;
+        margin: 30px auto 0;
+      }
+
+      &__btn {
+        box-sizing: border-box;
+        font-size: get_vw(24);
+        color: $color-songOpen;
+        font-weight: 900;
+        width: get_vw(290);
+        height: get_vw(80);
+        border: get_vw(8) solid #e5e5e5;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 100px;
+
+        @include min-screen() {
+          width: get_vw(200, 1100);
+          height: get_vw(40, 1100);
+          font-size: get_vw(18, 1100);
+          border: get_vw(4, 1100) solid #e5e5e5;
+          border-radius: get_vw(20, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 200px;
+          height: 40px;
+          font-size: 18px;
+          border-width: 4px;
+          border-radius: 20px;
+        }
+
+      }
+    }
+
+    &__count {
+      width: get_vw(600);
+      height: get_vw(120);
+      margin: get_vw(30) auto;
+      border: 3px solid $color-songOpen;
+      border-radius: get_vw(1000);
+      background: linear-gradient(90deg, $color-songOpen 0%, $color-songOpen 50%, #eeeeee 50%, #eeeeee 100%);
+      display: flex;
+      overflow: hidden;
+      box-sizing: border-box;
+
+      @include min-screen() {
+        background: linear-gradient(90deg, $color-songOpen 0%, $color-songOpen 40%, #eeeeee 40%, #eeeeee 100%);
+        width: get_vw(416, 1100);
+        height: get_vw(80, 1100);
+        margin: get_vw(30, 1100) auto;
+      }
+
+      @include min-screen(1100px) {
+        width: 416px;
+        height: 80px;
+        margin: 30px auto;
+      }
+
+      &__text {
+        color: #fff;
+        width: get_vw(300);
+        height: 110%;
+        margin-left: get_vw(-5);
+        margin-top: get_vw(-5);
+        font-size: get_vw(24);
+        background-color: $color-songOpen;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        text-align: center;
+
+        @include min-screen() {
+          width: get_vw(200, 1100);
+          margin-left: get_vw(-5, 1100);
+          margin-top: get_vw(-3, 1100);
+          font-size: get_vw(18, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 200px;
+          margin-left: -5px;
+          margin-top: -3px;
+          font-size: 18px;
+        }
+      }
+
+      &__num {
+        width: get_vw(300);
+        height: get_vw(110);
+        font-size: get_vw(40);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: 900;
+        text-align: center;
+        color: $color-songOpen;
+
+        @include min-screen() {
+          width: get_vw(216, 1100);
+          height: get_vw(70, 1100);
+          font-size: get_vw(32, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 216px;
+          height: 70px;
+          font-size: 32px;
+        }
+
+        &>.small {
+          margin-top: get_vw(10);
+          margin-left: get_vw(10);
+          font-size: get_vw(20);
+
+          @include min-screen() {
+            margin-top: get_vw(10, 1100);
+            margin-left: get_vw(10, 1100);
+            font-size: get_vw(18, 1100);
+          }
+
+          @include min-screen(1100px) {
+            margin-top: 10px;
+            margin-left: 10px;
+            font-size: 18px;
+          }
+        }
+      }
+    }
+
+    &__close {
+      width: get_vw(50);
+      position: absolute;
+      right: get_vw(20);
+      bottom: get_vw(-75);
+
+      @include min-screen() {
+        width: get_vw(40, 1100);
+        right: get_vw(10, 1100);
+        bottom: get_vw(-70, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 40px;
+        right: 10px;
+        bottom: -70px;
+      }
+    }
+  }
+
+  &--box {
+    margin-top: get_vw(50);
+    position: relative;
+    transform: translate3d(0, 0, 0);
+
+    &__title {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+
+      &--icon {
+        background-image: none;
+        margin-bottom: get_vw(11);
+
+        @include min-screen() {
+          margin-bottom: 0;
+          width: get_vw(65, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 65px;
+        }
+      }
+    }
+
+    &__tit {
+      margin: 0 get_vw(20);
+      @include center;
+
+      @include min-screen() {
+        margin: 0 get_vw(14, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin: 0 14px;
+      }
+    }
+
+    &.new {
+      .song--box__title--icon {
+        svg {
+          fill: $color-new;
+        }
+      }
+
+      .song--box__tit {
+        width: get_vw(229);
+
+        @include min-screen() {
+          width: get_vw(216, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 216px;
+        }
+      }
+
+      &:after,
+      &:before {
+        background-color: $color-new;
+      }
+    }
+
+    &.pops_anime {
+      .song--box__title--icon {
+        svg {
+          fill: $color-pops_anime;
+        }
+      }
+
+      .song--box__tit {
+        width: get_vw(289);
+
+        @include min-screen() {
+          width: get_vw(268, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 268px;
+        }
+      }
+
+      &:after,
+      &:before {
+        background-color: $color-pops_anime;
+      }
+    }
+
+    &.niconico {
+      .song--box__title--icon {
+        svg {
+          fill: $color-niconico;
+        }
+      }
+
+      .song--box__tit {
+        width: get_vw(451);
+
+        @include min-screen() {
+          width: get_vw(448, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 448px;
+        }
+      }
+
+      &:after,
+      &:before {
+        background-color: $color-niconico;
+      }
+    }
+
+    &.toho {
+      .song--box__title--icon {
+        svg {
+          fill: $color-toho;
+        }
+      }
+
+      .song--box__tit {
+        width: get_vw(229);
+
+        @include min-screen() {
+          width: get_vw(224, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 224px;
+        }
+      }
+
+      &:after,
+      &:before {
+        background-color: $color-toho;
+      }
+    }
+
+    &.maimai {
+      .song--box__title--icon {
+        svg {
+          fill: $color-maimai;
+        }
+      }
+
+      .song--box__tit {
+        width: get_vw(146);
+        margin-bottom: get_vw(6);
+
+        @include min-screen() {
+          width: get_vw(149, 1100);
+          margin-bottom: get_vw(8, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 149px;
+          margin-bottom: 8px;
+        }
+      }
+
+      &:after,
+      &:before {
+        background-color: $color-maimai;
+      }
+    }
+
+    &.variety {
+      .song--box__title--icon {
+        svg {
+          fill: $color-variety;
+        }
+      }
+
+      .song--box__tit {
+        width: get_vw(350);
+
+        @include min-screen() {
+          width: get_vw(322, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 322px;
+        }
+      }
+
+      &:after,
+      &:before {
+        background-color: $color-variety;
+      }
+    }
+
+    &.gekichu {
+      .song--box__title--icon {
+        svg {
+          fill: $color-gekichu;
+        }
+      }
+
+      .song--box__tit {
+        width: get_vw(434);
+
+        @include min-screen() {
+          width: get_vw(400, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 400px;
+        }
+      }
+
+      &:after,
+      &:before {
+        background-color: $color-gekichu;
+      }
+    }
+
+    &.utage {
+      .song--box__title--icon {
+        svg {
+          fill: $color-utage;
+        }
+      }
+
+      .song--box__tit {
+        width: get_vw(90);
+
+        @include min-screen() {
+          width: get_vw(95, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 95px;
+        }
+      }
+
+      &:after,
+      &:before {
+        background-color: $color-utage;
+      }
+    }
+
+    &__none {
+      font-size: get_vw(30);
+      margin-top: get_vw(40);
+      line-height: 2;
+      font-weight: 900;
+      text-align: center;
+
+      @include min-screen() {
+        font-size: get_vw(18, 1100);
+        margin-top: get_vw(40, 1100);
+      }
+
+      @include min-screen(1100px) {
+        font-size: 18px;
+        margin-top: 40px;
+      }
+    }
+  }
+
+  &--item {
+    padding: get_vw(50) get_vw(50) 0;
+
+    &:last-child {
+      .song--item__border {
+        display: none;
+      }
+    }
+
+    @include min-screen() {
+      padding: get_vw(50, 1100) get_vw(40, 1100) 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+    }
+
+    @include min-screen(1100px) {
+      padding: 50px 40px 0;
+    }
+
+    &__box {
+      @include min-screen() {
+        width: get_vw(588, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 588px;
+      }
+    }
+
+    &__top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &.lock {
+        &:after {
+          display: block;
+          content: "";
+          background-image: url(../img/song/lock.png);
+          background-size: contain;
+          width: get_vw(49);
+          height: get_vw(49);
+
+          @include min-screen() {
+            width: get_vw(49, 1100);
+            height: get_vw(49, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 49px;
+            height: 49px;
+          }
+        }
+      }
+    }
+
+    &__genre {
+      &.pops_anime {
+        width: get_vw(282);
+
+        @include min-screen() {
+          width: get_vw(171, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 171px;
+        }
+      }
+
+      &.toho {
+        width: get_vw(239);
+
+        @include min-screen() {
+          width: get_vw(148, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 148px;
+        }
+      }
+
+      &.maimai {
+        width: get_vw(169);
+
+        @include min-screen() {
+          width: get_vw(104, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 104px;
+        }
+      }
+
+      &.variety {
+        width: get_vw(335);
+
+        @include min-screen() {
+          width: get_vw(207, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 207px;
+        }
+      }
+
+      &.niconico {
+        width: get_vw(439);
+
+        @include min-screen() {
+          width: get_vw(273, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 273px;
+        }
+      }
+
+      &.gekichu {
+        width: get_vw(410);
+
+        @include min-screen() {
+          width: get_vw(255, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 255px;
+        }
+      }
+
+      &.utage {
+        width: get_vw(144);
+
+        @include min-screen() {
+          width: get_vw(92, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 92px;
+        }
+      }
+    }
+
+    &__middle {
+      display: flex;
+      margin-top: get_vw(30);
+
+      @include min-screen() {
+        margin-top: get_vw(10, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin-top: 10px;
+      }
+    }
+
+    &__info {
+      width: get_vw(370);
+      margin-left: get_vw(30);
+
+      @include min-screen() {
+        margin-left: 0;
+        width: 100%;
+      }
+
+      &.utage {
+        position: relative;
+
+        .song--item__icon {
+          background: transparent url(../img/song/utage/icon_buddy.png) no-repeat;
+          background-size: contain;
+          width: get_vw(69);
+          height: get_vw(53);
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          pointer-events: none;
+
+          @include min-screen() {
+            width: get_vw(55, 1100);
+            height: get_vw(49, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 55px;
+            height: 49px;
+          }
+        }
+      }
+    }
+
+    &__thumb {
+      width: get_vw(200);
+      font-size: 0;
+
+      @include min-screen() {
+        width: get_vw(200, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 200px;
+      }
+    }
+
+    &__tit {
+      font-size: get_vw(32);
+      font-weight: 900;
+      margin-top: get_vw(-8);
+      padding-bottom: get_vw(10);
+      border-bottom: 1px solid #e5e5e5;
+      line-height: 1.5;
+
+      @include min-screen() {
+        margin: 0;
+        padding: 0;
+        font-size: get_vw(28, 1100);
+        border: none;
+      }
+
+      @include min-screen(1100px) {
+        font-size: 28px;
+      }
+    }
+
+    &__artist {
+      font-size: get_vw(20);
+      font-weight: 900;
+      margin-top: get_vw(20);
+
+      @include min-screen() {
+        font-size: get_vw(14, 1100);
+        margin-top: get_vw(12, 1100);
+
+      }
+
+      @include min-screen(1100px) {
+        font-size: 14px;
+        margin-top: 12px;
+      }
+    }
+
+    &__artistName {
+      font-size: get_vw(24);
+      font-weight: 900;
+      margin-top: get_vw(10);
+
+      @include min-screen() {
+        font-size: get_vw(16, 1100);
+        margin-top: get_vw(10, 1100);
+      }
+
+      @include min-screen(1100px) {
+        font-size: 16px;
+        margin-top: 10px;
+      }
+    }
+
+    &__bottom {
+      margin-top: get_vw(30);
+
+      @include min-screen() {
+        margin-top: get_vw(20, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin-top: 20px;
+      }
+    }
+
+    &__lv {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      &:not(:first-child) {
+        margin-top: get_vw(10);
+
+        @include min-screen() {
+          margin-top: get_vw(10, 1100);
+        }
+
+        @include min-screen(1100px) {
+          margin-top: 10px;
+        }
+      }
+
+      &:after {
+        display: block;
+        content: "";
+        background-size: contain;
+        background-repeat: no-repeat;
+        width: get_vw(152);
+        height: get_vw(30);
+
+        @include min-screen() {
+          width: get_vw(150, 1100);
+          height: get_vw(30, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 150px;
+          height: 30px;
+        }
+      }
+
+      &.st {
+        &:after {
+          background-image: url(../img/song/inner_st.png);
+        }
+      }
+
+      &.dx {
+        &:after {
+          background-image: url(../img/song/inner_dx.png);
+        }
+      }
+
+      &.utage {
+
+        .song--item__lv__inner {
+          width: 100%;
+          flex-wrap: wrap;
+        }
+
+        .song--item__lv__num {
+          background-color: $color-utage;
+          font-size: get_vw(32);
+          width: get_vw(297);
+
+          @include min-screen() {
+            font-size: get_vw(28, 1100);
+            width: get_vw(292, 1100);
+          }
+
+          @include min-screen(1100px) {
+            font-size: 28px;
+            width: 292px;
+          }
+        }
+
+        &:after {
+          display: none;
+        }
+      }
+
+      &__inner {
+        width: get_vw(430);
+        display: flex;
+        justify-content: space-between;
+
+        @include min-screen() {
+          width: get_vw(430, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 430px;
+        }
+      }
+
+      &__num {
+        width: get_vw(80);
+        height: get_vw(60);
+        border-radius: get_vw(10);
+        font-size: get_vw(34);
+        font-weight: 900;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+
+        @include min-screen() {
+          width: get_vw(80, 1100);
+          height: get_vw(60, 1100);
+          border-radius: get_vw(10, 1100);
+          font-size: get_vw(34, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 80px;
+          height: 60px;
+          border-radius: 10px;
+          font-size: 34px;
+        }
+
+        &:nth-child(1) {
+          background-color: #6ed43e;
+        }
+
+        &:nth-child(2) {
+          background-color: #f7b807;
+        }
+
+        &:nth-child(3) {
+          background-color: #ff828d;
+        }
+
+        &:nth-child(4) {
+          background-color: #a051dc;
+        }
+
+        &:nth-child(5) {
+          border: get_vw(4) solid #a051dc;
+          color: #a051dc;
+          background-color: #fff;
+
+          @include min-screen() {
+            border-width: get_vw(4, 1100);
+          }
+
+          @include min-screen(1100px) {
+            border-width: 4px;
+          }
+        }
+      }
+
+      &__comment {
+        background-color: $color-utage;
+        border-radius: get_vw(10);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        width: 100%;
+        font-size: get_vw(24);
+        font-weight: 900;
+        margin-top: get_vw(10);
+        padding: get_vw(18) get_vw(10);
+
+        @include min-screen() {
+          border-radius: get_vw(10, 1100);
+          justify-content: flex-start;
+          font-size: get_vw(24, 1100);
+          margin-top: get_vw(10, 1100);
+          padding: get_vw(18, 1100) get_vw(20, 1100);
+        }
+
+        @include min-screen(1100px) {
+          border-radius: 10px;
+          font-size: 24px;
+          margin-top: 10px;
+          padding: 18px 20px;
+        }
+      }
+    }
+
+    &__copy {
+      font-size: get_vw(18);
+      margin-top: get_vw(20);
+      line-height: 2;
+
+      @include min-screen() {
+        font-size: get_vw(10, 1100);
+        margin-top: get_vw(10, 1100);
+      }
+
+      @include min-screen(1100px) {
+        font-size: 10px;
+        margin-top: 10px;
+      }
+
+
+    }
+
+
+    &__border {
+      width: 100%;
+      height: get_vw(6);
+      border-radius: 100px;
+      background-color: #e5e5e5;
+      margin-top: get_vw(50);
+
+      @include min-screen() {
+        height: get_vw(6, 1100);
+        margin-top: get_vw(50, 1100);
+        width: 140%;
+        margin-left: -40%;
+      }
+
+      @include min-screen(1100px) {
+        height: 6px;
+        margin-top: 50px;
+      }
+    }
+  }
+
+  &--copy {
+    position: relative;
+    width: get_vw(700);
+    border-radius: get_vw(30);
+    box-shadow: get_vw(14) get_vw(14) 0px 0px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 255, 255, 0.7);
+    margin: get_vw(70) auto 0;
+    padding: get_vw(45) get_vw(40);
+    font-size: get_vw(20);
+    line-height: 1.8;
+
+    @include min-screen() {
+      width: get_vw(900, 1100);
+      border-radius: get_vw(30, 1100);
+      box-shadow: get_vw(14, 1100) get_vw(14, 1100) 00px 0px rgba(0, 0, 0, 0.2);
+      padding: get_vw(45, 1100) get(40, 1100);
+      margin-top: get_vw(80, 1100);
+      font-size: get_vw(12, 1100);
+    }
+
+    @include min-screen(1100px) {
+      width: 900px;
+      border-radius: 30px;
+      box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.2);
+      padding: 45px 40px;
+      margin-top: 80px;
+      font-size: 12px;
+    }
+
+    & .piapro {
+      width: get_vw(95);
+      height: get_vw(22);
+      display: inline-block;
+      margin: 0 get_vw(5) get_vw(-5);
+      -webkit-backface-visibility: hidden;
+      background-image: url("../img/song/piapro_logo.png");
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      @include min-screen() {
+        width: get_vw(75, 1100);
+        height: get_vw(18, 1100);
+        margin: 0 get_vw(5, 1100) get_vw(-5, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 75px;
+        height: 18px;
+        margin: 0 5px -5px;
+      }
+    }
+  }
+}
+
+#song--search {
+  &.m_fixed {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 200;
+    margin-top: 0;
+  }
+}

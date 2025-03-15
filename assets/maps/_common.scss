@@ -1,0 +1,381 @@
+.common {
+  &--box {
+    position: relative;
+    width: get_vw(700);
+    border-radius: get_vw(30);
+    box-shadow: get_vw(14) get_vw(14) 0px 0px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    margin: 0 auto;
+    padding: get_vw(65) 0;
+
+    @include min-screen() {
+      width: get_vw(900, 1100);
+      border-radius: get_vw(30, 1100);
+      box-shadow: get_vw(14, 1100) get_vw(14, 1100) 00px 0px rgba(0, 0, 0, 0.2);
+      padding: get_vw(50, 1100) 0;
+    }
+
+    @include min-screen(1100px) {
+      width: 900px;
+      border-radius: 30px;
+      box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.2);
+      padding: 50px 0;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      display: block;
+      content: "";
+      width: get_vw(600);
+      height: get_vw(12);
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include min-screen() {
+        width: get_vw(600, 1100);
+        height: get_vw(8, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 600px;
+        height: 8px;
+      }
+    }
+
+    &:before {
+      top: 0;
+      border-radius: 0 0 get_vw(12) get_vw(12);
+      background-color: $color-boxTop;
+
+      @include min-screen() {
+        border-radius: 0 0 get_vw(8, 1100) get_vw(8, 1100);
+
+      }
+
+      @include min-screen(1100px) {
+        border-radius: 0 0 8px 8px;
+      }
+    }
+
+    &:after {
+      bottom: 0;
+      border-radius: get_vw(12) get_vw(12) 0 0;
+      background-color: $color-boxBottom;
+
+      @include min-screen() {
+        border-radius: get_vw(8, 1100) get_vw(8, 1100) 0 0;
+
+      }
+
+      @include min-screen(1400px) {
+        border-radius: 8px 8px 0 0;
+      }
+    }
+  }
+
+  &--top {
+    position: fixed;
+    z-index: 100;
+    display: block;
+    bottom: get_vw(20);
+    right: get_vw(20);
+    width: get_vw(120);
+    transform: translateY(0);
+    transition: 300ms;
+
+    &.off {
+      opacity: 0;
+      transform: translateY(30%);
+      pointer-events: none;
+    }
+
+    @include hover_up();
+
+    @include min-screen() {
+      bottom: get_vw(20, $vp-pc);
+      right: get_vw(20, $vp-pc);
+      width: get_vw(120, $vp-pc);
+      transition: 300ms;
+    }
+
+    @include min-screen(1400px) {
+      bottom: 20px;
+      right: 20px;
+      width: 120px;
+    }
+  }
+
+  &--share {
+    position: relative;
+    width: get_vw(700);
+    border-radius: get_vw(30);
+    box-shadow: get_vw(14) get_vw(14) 0px 0px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    margin: 0 auto;
+    padding: get_vw(65) 0;
+
+    @include min-screen() {
+      width: get_vw(900, 1100);
+      border-radius: get_vw(30, 1100);
+      box-shadow: get_vw(14, 1100) get_vw(14, 1100) 00px 0px rgba(0, 0, 0, 0.2);
+      padding: get_vw(50, 1100) 0;
+    }
+
+    @include min-screen(1100px) {
+      width: 900px;
+      border-radius: 30px;
+      box-shadow: 14px 14px 0px 0px rgba(0, 0, 0, 0.2);
+      padding: 50px 0;
+    }
+
+    &:before,
+    &:after {
+      position: absolute;
+      display: block;
+      content: "";
+      width: get_vw(600);
+      height: get_vw(12);
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include min-screen() {
+        width: get_vw(600, 1100);
+        height: get_vw(8, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 600px;
+        height: 8px;
+      }
+    }
+
+    &:before {
+      top: 0;
+      border-radius: 0 0 get_vw(12) get_vw(12);
+      background-color: $color-boxTop;
+
+      @include min-screen() {
+        border-radius: 0 0 get_vw(8, 1100) get_vw(8, 1100);
+
+      }
+
+      @include min-screen(1100px) {
+        border-radius: 0 0 8px 8px;
+      }
+    }
+
+    &:after {
+      bottom: 0;
+      border-radius: get_vw(12) get_vw(12) 0 0;
+      background-color: $color-boxBottom;
+
+      @include min-screen() {
+        border-radius: get_vw(8, 1100) get_vw(8, 1100) 0 0;
+
+      }
+
+      @include min-screen(1400px) {
+        border-radius: 8px 8px 0 0;
+      }
+    }
+  }
+
+  &--header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+
+    &__txt {
+      margin: 0 get_vw(10);
+
+      @include min-screen() {
+        margin: 0 get_vw(8, 1100);
+      }
+
+      @include min-screen(1400px) {
+        margin: 0 8px;
+      }
+
+      svg {
+        width: 100%;
+        fill: $color-header;
+        fill-rule: evenodd;
+      }
+    }
+
+    &__icon {
+      background-image: url(#{$versionPath}common/icon_header_left.png);
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center center;
+      display: block;
+      width: get_vw(81);
+      height: get_vw(56);
+
+      @include min-screen() {
+        width: get_vw(81, $vp-pc);
+        height: get_vw(56, $vp-pc);
+        margin-bottom: 0;
+      }
+
+      @include min-screen(1400px) {
+        width: 81px;
+        height: 56px;
+      }
+
+      &.right {
+        background-image: url(#{$versionPath}common/icon_header_right.png);
+      }
+
+      svg {
+        width: 100%;
+        height: 100%;
+        fill: $color-header__icon;
+        fill-rule: evenodd;
+      }
+    }
+  }
+
+  &--btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    margin: 0 auto;
+    width: get_vw(490);
+    height: get_vw(90);
+    font-size: get_vw(34);
+    border-radius: get_vw(100);
+    font-weight: 900;
+    background-color: $color-btn;
+    box-shadow: 0px get_vw(16) 0px 0px $color-btnShadow;
+    position: relative;
+    word-break: break-all;
+    white-space: nowrap;
+
+    @include min-screen() {
+      width: get_vw(400, 1100);
+      height: get_vw(60, 1100);
+      font-size: get_vw(28, 1100);
+      box-shadow: 0px get_vw(10, 1100) 0px 0px $color-btnShadow;
+      transition: 300ms;
+
+      &:hover {
+        box-shadow: none;
+        transform: translateY(get_vw(10, 1100))
+      }
+
+    }
+
+    @include min-screen(1100px) {
+      width: 400px;
+      height: 60px;
+      font-size: 28px;
+      box-shadow: 0px 10px 0px 0px $color-btnShadow;
+
+      &:hover {
+        transform: translateY(10px)
+      }
+    }
+
+    &:after {
+      right: get_vw(35);
+
+      @include min-screen() {
+        right: get_vw(20, 1100);
+      }
+
+      @include min-screen(1100px) {
+        right: 20px;
+      }
+    }
+
+    &.next {
+      &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        width: get_vw(18);
+        height: get_vw(20);
+        background-image: url(../img/common/icon_next.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        @include min-screen() {
+          width: get_vw(18, 1100);
+          height: get_vw(20, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 18px;
+          height: 20px;
+        }
+      }
+    }
+
+    &.blank {
+      &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        width: get_vw(26);
+        height: get_vw(20);
+        background-image: url(../img/common/icon_blank.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        @include min-screen() {
+          width: get_vw(26, 1100);
+          height: get_vw(20, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 26px;
+          height: 20px;
+        }
+      }
+    }
+
+    &.download {
+      &:after {
+        position: absolute;
+        display: block;
+        content: "";
+        width: get_vw(36);
+        height: get_vw(40);
+        background-image: url(../img/common/icon_download.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+
+        @include min-screen() {
+          width: get_vw(20, 1100);
+          height: get_vw(22, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 20px;
+          height: 22px;
+        }
+      }
+    }
+  }
+
+  &--title {
+    padding-top: get_vw(170);
+    width: get_vw(706);
+    margin: 0 auto;
+
+    @include min-screen() {
+      padding-top: 0;
+      margin: get_vw(70, 1100) auto 0;
+      width: get_vw(906, 1100);
+    }
+
+    @include min-screen(1100px) {
+      width: 906px;
+      margin: 70px auto 0;
+    }
+  }
+}

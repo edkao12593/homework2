@@ -1,0 +1,109 @@
+@charset "UTF-8";
+
+// ミックスイン
+
+@import "mixin";
+@import "media-queries";
+
+// common
+@import "common";
+// 背景
+@import "bg";
+// ヘッダー
+@import "header";
+// フッター
+@import "footer";
+// トップ
+@import "top";
+// howto
+@import"play";
+// song list
+@import"song";
+// ダウンロード
+@import"dl";
+// ランキング
+@import"ranking";
+
+/*========================================
+*	common
+========================================*/
+// セレクション
+::selection {
+  background: #f8e11b;
+  color: #ff5264;
+}
+
+html,
+body {
+  //font-size: 62.5%;
+  height: 100%;
+  color: #000;
+  background-color: #ffffff;
+  font-family: $font-base;
+  -webkit-font-smoothing: antialiased;
+}
+
+*:focus {
+  outline: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+::-webkit-scrollbar {
+  //display: none;
+  //-webkit-appearance: none;
+}
+
+body {
+  width: 100%;
+}
+
+a {
+  color: #000;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+tr,
+th,
+td {
+  font-weight: normal;
+  text-align: left;
+}
+
+img,
+picture {
+  width: 100%;
+}
+
+// pc非表示
+.pc-none {
+  display: none;
+
+  @include max-screen($bp_sp) {
+    display: block;
+  }
+}
+
+// sp非表示
+.sp-none {
+  @include max-screen($bp_sp) {
+    display: none;
+  }
+}
+
+.wrapper {
+  position: relative;
+}

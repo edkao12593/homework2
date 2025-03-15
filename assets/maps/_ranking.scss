@@ -1,0 +1,576 @@
+.ranking {
+
+  &--box {
+    margin-top: get_vw(35);
+
+    @include min-screen() {
+      margin-top: get_vw(30, 1100);
+    }
+
+    @include min-screen(1100px) {
+      margin-top: 30px;
+    }
+
+    &__header {
+      &--txt {
+        color: $color-rankText;
+        font-size: get_vw(24);
+        font-weight: 900;
+        text-align: center;
+        line-height: 1.5;
+        width: get_vw(100);
+
+        @include min-screen() {
+          font-size: get_vw(18, $vp-pc);
+          width: get_vw(100, 1100);
+        }
+
+        @include min-screen(1100px) {
+          font-size: 18px;
+          width: 100px;
+        }
+      }
+    }
+  }
+
+  &--season {
+    margin: get_vw(20) auto 0;
+    width: get_vw(600);
+    position: relative;
+    overflow: hidden;
+    border-radius: 45px;
+
+
+    @include min-screen() {
+      margin-top: get_vw(14, 1100);
+      width: get_vw(844, 1100);
+      border-radius: get_vw(30, 1100);
+    }
+
+    @include min-screen(1100px) {
+      margin-top: 14px;
+      width: 844px;
+      border-radius: 30px;
+    }
+
+    &__selectbox {
+      overflow: hidden;
+      text-align: center;
+      width: 100%;
+      max-width: 100%;
+
+      select {
+        background: transparent;
+        background-image: none;
+        border: none;
+        box-shadow: none;
+        appearance: none;
+        cursor: pointer;
+        padding-right: 1em;
+        text-indent: 0.01px;
+        text-overflow: ellipsis;
+        outline: none;
+        width: 100%;
+
+        &::-ms-expand {
+          display: none;
+        }
+      }
+
+      &.slb {
+        background: transparent;
+        border: get_vw(8) solid $color-selectBorder;
+        border-radius: 45px;
+        position: relative;
+
+        @include min-screen() {
+          border-width: get_vw(4, 1100);
+          border-radius: get_vw(30, 1100);
+        }
+
+        @include min-screen(1100px) {
+          border-width: 4px;
+          border-radius: 30px;
+        }
+
+        select {
+          color: $color-rankText;
+          font-size: get_vw(24);
+          font-weight: 900;
+          padding: get_vw(22) 0 get_vw(22) get_vw(130);
+
+          @include min-screen() {
+            font-size: get_vw(24, 1100);
+            padding: get_vw(13, 1100) 0 get_vw(12, 1100) get_vw(290, 1100);
+          }
+
+          @include min-screen(1100px) {
+            font-size: 24px;
+            padding: 13px 0 12px 290px;
+          }
+        }
+      }
+    }
+
+    &__btn {
+      background-color: $color-selectBtn;
+      box-sizing: border-box;
+      pointer-events: none;
+      position: absolute;
+      top: 0;
+      right: 0;
+      height: 110%;
+      width: get_vw(86);
+      padding: 0;
+      z-index: 2;
+
+      @include min-screen() {
+        width: get_vw(60, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 60px;
+      }
+
+      &:after {
+        content: "";
+        display: block;
+        background: url(../img/common/icon_select.png) no-repeat;
+        background-size: contain;
+        position: absolute;
+        top: get_vw(37);
+        right: get_vw(36);
+        height: get_vw(18);
+        width: get_vw(20);
+        z-index: 3;
+
+        @include min-screen() {
+          top: get_vw(24, 1100);
+          right: get_vw(24, 1100);
+          height: get_vw(14, 1100);
+          width: get_vw(15, 1100);
+        }
+
+        @include min-screen(1100px) {
+          top: 24px;
+          right: 24px;
+          height: 14px;
+          width: 15px;
+        }
+      }
+    }
+
+  }
+
+  &--date {
+    font-size: get_vw(22);
+    margin-top: get_vw(28);
+    text-align: center;
+
+    @include min-screen() {
+      font-size: get_vw(16, 1100);
+      margin-top: get_vw(18, 1100);
+    }
+
+    @include min-screen(1100px) {
+      font-size: 16px;
+      margin-top: 18px;
+    }
+  }
+
+  &--list {
+    margin: get_vw(16) auto 0;
+    width: get_vw(600);
+
+    @include min-screen() {
+      margin-top: get_vw(14, 1100);
+      width: get_vw(820, 1100);
+    }
+
+    @include min-screen(1100px) {
+      margin-top: 14px;
+      width: 820px;
+    }
+
+    &__item {
+      padding: get_vw(36) 0;
+      width: 100%;
+      position: relative;
+
+      @include min-screen() {
+        padding: get_vw(30, 1100) 0 get_vw(27, 1100);
+      }
+
+      @include min-screen(1100px) {
+        padding: 30px 0 27px;
+      }
+
+      &:nth-of-type(n+2) {
+        &:before {
+          content: "";
+          display: block;
+          background-color: $color-listLine;
+          border-radius: get_vw(4);
+          height: get_vw(8);
+          width: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+
+          @include min-screen() {
+            border-radius: get_vw(3, 1100);
+            height: get_vw(6, 1100);
+          }
+
+          @include min-screen(1100px) {
+            border-radius: 3px;
+            height: 6px;
+          }
+        }
+      }
+    }
+
+    &__wrap {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &__rank {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: get_vw(100);
+
+      @include min-screen() {
+        width: get_vw(149, 1100);
+        padding-right: get_vw(42, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 149px;
+        padding-right: 42px;
+      }
+
+      .ranking--list__num {
+        background-repeat: no-repeat;
+        background-size: 100% auto;
+        user-select: none;
+        height: get_vw(50);
+        width: get_vw(42);
+
+        @include min-screen {
+          height: get_vw(50, 1100);
+          width: get_vw(42, 1100);
+        }
+
+        @include min-screen(1100px) {
+          height: 50px;
+          width: 42px;
+        }
+
+        &:nth-of-type(2n) {
+          margin-left: get_vw(-4);
+
+          @include min-screen {
+            margin-left: get_vw(-4, 1100);
+          }
+
+          @include min-screen(1100px) {
+            margin-left: -4px;
+          }
+        }
+
+        &.num0 {
+          background-image: url(../img/ranking/rank_num_sv0.png);
+          height: get_vw(50);
+          width: get_vw(43);
+
+          @include min-screen {
+            height: get_vw(50, 1100);
+            width: get_vw(41, 1100);
+          }
+
+          @include min-screen(1100px) {
+            height: 50px;
+            width: 41px;
+          }
+        }
+
+        &.num1 {
+          background-image: url(../img/ranking/rank_num_sv1.png);
+          height: get_vw(51);
+          width: get_vw(41);
+
+          @include min-screen {
+            height: get_vw(51, 1100);
+            width: get_vw(41, 1100);
+          }
+
+          @include min-screen(1100px) {
+            height: 51px;
+            width: 41px;
+          }
+        }
+
+        &.num2 {
+          background-image: url(../img/ranking/rank_num_sv2.png);
+        }
+
+        &.num3 {
+          background-image: url(../img/ranking/rank_num_sv3.png);
+        }
+
+        &.num4 {
+          background-image: url(../img/ranking/rank_num_sv4.png);
+        }
+
+        &.num5 {
+          background-image: url(../img/ranking/rank_num_sv5.png);
+        }
+
+        &.num6 {
+          background-image: url(../img/ranking/rank_num_sv6.png);
+        }
+
+        &.num7 {
+          background-image: url(../img/ranking/rank_num_sv7.png);
+        }
+
+        &.num8 {
+          background-image: url(../img/ranking/rank_num_sv8.png);
+        }
+
+        &.num9 {
+          background-image: url(../img/ranking/rank_num_sv9.png);
+        }
+      }
+
+      &.gold {
+        .ranking--list__num {
+          &.num1 {
+            background-image: url(../img/ranking/rank_num_gold1.png);
+            height: get_vw(49);
+            width: get_vw(40);
+
+            @include min-screen {
+              height: get_vw(50, 1100);
+              width: get_vw(41, 1100);
+            }
+
+            @include min-screen(1100px) {
+              height: 50px;
+              width: 41px;
+            }
+          }
+        }
+      }
+
+      &.bronze {
+        .ranking--list__num {
+          &.num0 {
+            background-image: url(../img/ranking/rank_num_bz0.png);
+            height: get_vw(50);
+            width: get_vw(43);
+
+            @include min-screen {
+              height: get_vw(50, 1100);
+              width: get_vw(43, 1100);
+            }
+
+            @include min-screen(1100px) {
+              height: 50px;
+              width: 43px;
+            }
+          }
+
+          &.num1 {
+            background-image: url(../img/ranking/rank_num_bz1.png);
+            width: get_vw(41);
+
+            @include min-screen {
+              width: get_vw(41, 1100);
+            }
+
+            @include min-screen(1100px) {
+              width: 41px;
+            }
+          }
+
+          &.num2 {
+            background-image: url(../img/ranking/rank_num_bz2.png);
+          }
+
+          &.num3 {
+            background-image: url(../img/ranking/rank_num_bz3.png);
+          }
+
+          &.num4 {
+            background-image: url(../img/ranking/rank_num_bz4.png);
+          }
+
+          &.num5 {
+            background-image: url(../img/ranking/rank_num_bz5.png);
+          }
+
+          &.num6 {
+            background-image: url(../img/ranking/rank_num_bz6.png);
+          }
+
+          &.num7 {
+            background-image: url(../img/ranking/rank_num_bz7.png);
+          }
+
+          &.num8 {
+            background-image: url(../img/ranking/rank_num_bz8.png);
+          }
+
+          &.num9 {
+            background-image: url(../img/ranking/rank_num_bz9.png);
+          }
+
+          &.num100 {
+            background-image: url(../img/ranking/rank_num_bz100.png);
+            width: get_vw(113);
+
+            @include min-screen() {
+              height: get_vw(51, 1100);
+              width: get_vw(113, 1100);
+            }
+
+            @include min-screen(1100px) {
+              height: 51px;
+              width: 113px;
+            }
+          }
+        }
+      }
+    }
+
+    &__dtl {
+      margin-left: get_vw(30);
+      width: get_vw(460);
+
+      @include min-screen() {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: baseline;
+        margin-left: 0;
+        width: get_vw(670, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 670px;
+      }
+
+      &__txt {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        font-weight: 800;
+
+        @include min-screen {
+          align-items: center;
+        }
+
+        .tag {
+          background-color: $color-tagBG;
+          border-radius: get_vw(11);
+          color: $color-tagTxt;
+          display: inline-block;
+          font-size: get_vw(20);
+          padding: get_vw(1) 0 get_vw(2);
+          text-align: center;
+          width: get_vw(84);
+
+          @include min-screen {
+            border-radius: get_vw(7, 1100);
+            font-size: get_vw(12, 1100);
+            padding: get_vw(1, 1100) 0;
+            margin-top: get_vw(5, 1100);
+            width: get_vw(50, 1100);
+          }
+
+          @include min-screen(1100px) {
+            border-radius: 7px;
+            font-size: 12px;
+            padding: 1px 0;
+            margin-top: 5px;
+            width: 50px;
+          }
+        }
+
+        .name,
+        .point {
+          font-size: get_vw(28);
+          margin-left: get_vw(15);
+
+          @include min-screen {
+            font-size: get_vw(24, 1100);
+            margin-left: get_vw(20, 1100);
+          }
+
+          @include min-screen(1100px) {
+            font-size: 24px;
+            margin-left: 20px;
+          }
+        }
+
+        &:last-of-type {
+          margin-top: get_vw(22);
+          padding-top: get_vw(19);
+          position: relative;
+
+          @include min-screen {
+            margin-top: 0;
+            padding: get_vw(18, 1100) get_vw(12, 1100) get_vw(18, 1100) get_vw(28, 1100);
+          }
+
+          @include min-screen(1100px) {
+            padding: 18px 12px 18px 28px;
+          }
+
+          &:before {
+            content: "";
+            display: block;
+            background: transparent url(../img/ranking/line_dashed_sp.png) no-repeat;
+            background-size: get_vw(460) auto;
+            height: get_vw(4);
+            width: get_vw(460);
+            position: absolute;
+            top: 0;
+            right: get_vw(-5);
+
+            @include min-screen {
+              background-image: url(../img/ranking/line_dashed_pc.png);
+              background-size: get_vw(4, 1100) auto;
+              height: get_vw(60, 1100);
+              width: get_vw(4, 1100);
+              right: initial;
+              left: 0;
+            }
+
+            @include min-screen(1100px) {
+              background-size: 4px auto;
+              height: 60px;
+              width: 4px;
+            }
+          }
+        }
+
+        &:first-of-type {
+          @include min-screen {
+            width: get_vw(390, 1100);
+          }
+
+          @include min-screen(1100px) {
+            width: 390px;
+          }
+        }
+      }
+    }
+  }
+}

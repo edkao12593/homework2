@@ -1,0 +1,579 @@
+.header {
+  position: relative;
+  z-index: 1000000;
+
+  &--language {
+    width: get_vw(745);
+    height: get_vw(80);
+    top: get_vw(30);
+    border-radius: 100px;
+    background-color: #fff;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    @include shadow();
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: get_vw(30);
+
+    @include min-screen() {
+      display: none;
+    }
+
+    &__link {
+      background-color: $color-languageBG;
+      border-radius: 0 100px 100px 0;
+      width: get_vw(191);
+      padding-left: get_vw(20);
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    &__text {
+      font-size: get_vw(20);
+      font-weight: 800;
+      flex: 1;
+    }
+
+    &__svg {
+      width: get_vw(120);
+      margin-top: get_vw(4);
+
+      & .svg {
+        width: 100%;
+        height: auto;
+        fill: $color-language;
+        fill-rule: evenodd;
+      }
+    }
+
+    &__arrow {
+      width: get_vw(30);
+      margin-left: get_vw(10);
+      font-size: 0;
+      position: relative;
+
+      img {
+        position: relative;
+        z-index: 10;
+      }
+
+      &::after {
+        display: block;
+        content: "";
+        position: absolute;
+        background-color: $color-languageArrow;
+        width: get_vw(15);
+        height: get_vw(15);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 0;
+      }
+    }
+  }
+
+  &--btn {
+    width: get_vw(120);
+    height: get_vw(120);
+    background-color: #fff;
+    border: get_vw(10) solid $color-slider;
+    position: fixed;
+    z-index: 10;
+    top: get_vw(60);
+    right: get_vw(20);
+    border-radius: 100px;
+    @include shadow();
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: 300ms;
+    transform: translateY(0);
+
+    &.off {
+      opacity: 0;
+      transform: translateY(-100%);
+      pointer-events: none;
+    }
+
+    @include min-screen() {
+      display: none;
+    }
+
+    span {
+      display: block;
+      width: get_vw(45);
+      height: get_vw(8);
+      background-color: $color-slider;
+      border-radius: 100px;
+      position: relative;
+
+      &:first-child {
+        top: get_vw(-8);
+      }
+
+      &:last-child {
+        top: get_vw(8);
+      }
+    }
+  }
+
+  &--nav {
+    padding-top: get_vw(60);
+    position: fixed;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    z-index: 1000;
+    transition: all 300ms;
+    opacity: 0;
+    @include shadow();
+
+    @include min-screen() {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      opacity: 1;
+      margin: get_vw(20, $vp-pc) auto 0;
+      width: get_vw(1200, $vp-pc);
+      height: get_vw(100, $vp-pc);
+      border-radius: get_vw(50, $vp-pc);
+      padding-top: 0;
+      padding-left: get_vw(54, $vp-pc);
+      position: relative;
+      top: auto;
+      left: auto;
+      transition: none;
+    }
+
+    @include min-screen(1400px) {
+      margin: 20px auto 0;
+      width: 1200px;
+      height: 100px;
+      border-radius: 50px;
+      padding-left: 54px;
+    }
+
+    &.open {
+      top: 0;
+      opacity: 1;
+    }
+
+    &__btn {
+      width: get_vw(120);
+      height: get_vw(120);
+      background-color: $color-slider;
+      position: absolute;
+      top: get_vw(60);
+      right: get_vw(20);
+      border-radius: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      @include min-screen() {
+        display: none;
+      }
+
+      span {
+        display: block;
+        width: get_vw(50);
+        height: get_vw(8);
+        background-color: #fff;
+        border-radius: 100px;
+        position: relative;
+
+        &:first-child {
+          top: get_vw(4);
+          transform: rotate(45deg);
+        }
+
+        &:last-child {
+          top: get_vw(-4);
+          transform: rotate(-45deg);
+        }
+      }
+    }
+
+    &__logo {
+      display: block;
+      width: get_vw(331);
+      transform: translate3d(0, 0, 0);
+
+      @include max-screen() {
+        position: relative;
+        z-index: 2;
+        left: 52%;
+        transform: translate3d(-50%, 0, 0);
+      }
+
+      @include min-screen() {
+        width: get_vw(157, $vp-pc);
+        margin: 0 0 get_vw(7, $vp-pc);
+        transition: opacity 300ms;
+
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+
+      @include min-screen(1400px) {
+        width: 157px;
+        margin: 0 0 7px;
+      }
+    }
+
+    &__inner {
+      margin: get_vw(52) 0 0 0;
+
+      @include min-screen() {
+        margin: 0 get_vw(50, $vp-pc) get_vw(20, $vp-pc) 0;
+      }
+
+      @include min-screen(1400px) {
+        margin: 0 50px 20px 0;
+      }
+    }
+
+    &__list {
+      @include min-screen() {
+        display: flex;
+      }
+    }
+
+    &__item {
+      margin: get_vw(40) 0 0;
+
+      @include min-screen() {
+        display: flex;
+        align-items: center;
+        margin: 0;
+      }
+
+      &:not(:last-child) {
+        @include min-screen() {
+          margin: 0 get_vw(12, $vp-pc) 0 0;
+        }
+
+        @include min-screen(1400px) {
+          margin: 0 12px 0 0;
+        }
+
+        &::after {
+          display: block;
+          content: "";
+          width: get_vw(30);
+          height: get_vw(4);
+          background-color: #e5e5e5;
+          margin: get_vw(40) auto 0;
+
+          @include min-screen() {
+            width: 1px;
+            height: get_vw(14, $vp-pc);
+            margin: 0 0 0 get_vw(14, $vp-pc);
+          }
+
+          @include min-screen(1400px) {
+            height: 14px;
+            margin: 0 0 0 14px;
+          }
+        }
+      }
+    }
+
+    &__link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      position: relative;
+
+      &.on,
+      &:hover {
+        &::before {
+          @include min-screen() {
+            position: absolute;
+            bottom: get_vw(-20, $vp-pc);
+            content: "";
+            display: block;
+            width: 100%;
+            background-color: $color-languageBG;
+            height: get_vw(5, $vp-pc);
+            border-radius: 100px 100px 0 0;
+          }
+
+          @include min-screen(1400px) {
+            height: 5px;
+            bottom: -20px;
+          }
+        }
+      }
+
+      &.blank {
+        &:after {
+          display: block;
+          content: "";
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 22 16"><path fill="rgb(255, 186, 66)" d="M3.272,3.615H-0.01V16H17.51V13.354H3.272V3.615ZM6.469,0V10.382H21.99V0H6.469Z"/></svg>');
+          background-size: contain;
+          background-repeat: no-repeat;
+          width: get_vw(26);
+          height: get_vw(20);
+          margin-left: get_vw(14);
+
+          @include min-screen() {
+            width: get_vw(11, $vp-pc);
+            height: get_vw(8, $vp-pc);
+            margin-left: get_vw(6, $vp-pc);
+          }
+
+          @include min-screen(1400px) {
+            width: 11px;
+            height: 8px;
+            margin-left: 6px;
+          }
+        }
+      }
+
+      & svg {
+        fill: $color-nav;
+        fill-rule: evenodd;
+        height: get_vw(50);
+
+        @include min-screen() {
+          height: get_vw(18, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          height: 18px;
+        }
+      }
+
+      &.l01 {
+        width: get_vw(123);
+
+        @include min-screen() {
+          width: get_vw(63, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          width: 63px;
+        }
+      }
+
+      &.l02 {
+        width: get_vw(254);
+
+        @include min-screen() {
+          width: get_vw(128, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          width: 128px;
+        }
+      }
+
+      &.l03 {
+        width: get_vw(199);
+
+        @include min-screen() {
+          width: get_vw(101, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          width: 101px;
+        }
+      }
+
+      &.l04 {
+        width: get_vw(170);
+
+        @include min-screen() {
+          width: get_vw(85, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          width: 85px;
+        }
+      }
+
+      &.l05 {
+        width: get_vw(207);
+
+        @include min-screen() {
+          width: get_vw(105, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          width: 105px;
+        }
+      }
+
+      &.l06 {
+        width: get_vw(116+40);
+
+        @include min-screen() {
+          width: get_vw(59+17, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          width: 76px;
+        }
+      }
+
+      &.l07 {
+        width: get_vw(301+40);
+
+        @include min-screen() {
+          width: get_vw(151+17, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          width: 168px;
+        }
+      }
+    }
+
+    &__language {
+      display: none;
+
+      @include min-screen() {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        margin-bottom: get_vw(20, $vp-pc);
+      }
+
+      @include min-screen(1400px) {
+        margin-bottom: 20px;
+      }
+
+      &__text {
+        @include min-screen() {
+          font-size: get_vw(14, $vp-pc);
+          font-weight: 800;
+        }
+
+        @include min-screen(1400px) {
+          font-size: 14px;
+        }
+      }
+
+      &__link {
+        @include min-screen() {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          position: relative;
+          background-color: $color-languageBG;
+          width: get_vw(190, $vp-pc);
+          height: get_vw(30, $vp-pc);
+          border-radius: 1000px;
+        }
+
+        &:hover {
+          background-color: $color-languageHover;
+
+          &:before {
+            background-color: $color-languageHover;
+          }
+
+          & .header--nav__language__linkText svg {
+            fill: $color-language;
+            fill-rule: evenodd;
+          }
+        }
+
+        @include min-screen(1400px) {
+          width: 190px;
+          height: 30px;
+        }
+      }
+
+      &__btn {
+        @include min-screen() {
+          position: relative;
+          width: get_vw(190, $vp-pc);
+          height: get_vw(30, $vp-pc);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-left: get_vw(15, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          width: 190px;
+          height: 30px;
+          margin-left: 15px;
+        }
+
+        &:after {
+          @include min-screen() {
+            display: block;
+            content: "";
+            background-image: url(../img/header/btn_arrow.svg);
+            background-size: contain;
+            background-repeat: no-repeat;
+            position: absolute;
+            width: get_vw(14, $vp-pc);
+            height: get_vw(14, $vp-pc);
+            right: get_vw(10, $vp-pc);
+          }
+
+          @include min-screen(1400px) {
+            width: 15px;
+            height: 15px;
+            right: 10px;
+          }
+        }
+
+        &:before {
+          @include min-screen() {
+            position: absolute;
+            display: block;
+            content: "";
+            background-color: $color-languageArrow;
+            width: get_vw(10, $vp-pc);
+            height: get_vw(10, $vp-pc);
+            right: get_vw(12, $vp-pc);
+            border-radius: 100px;
+          }
+
+          @include min-screen(1400px) {
+            width: 10px;
+            height: 10px;
+            right: 12px;
+          }
+        }
+      }
+
+      &__linkText {
+        @include min-screen() {
+          width: get_vw(137, $vp-pc);
+          margin-left: get_vw(-6, $vp-pc);
+        }
+
+        @include min-screen(1400px) {
+          width: 137px;
+          margin-left: -6px;
+        }
+
+        & svg {
+          fill: $color-language;
+          fill-rule: evenodd;
+        }
+      }
+    }
+  }
+}
+
+.song {
+  & .header--btn {
+    top: get_vw(140);
+  }
+}

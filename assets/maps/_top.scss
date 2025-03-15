@@ -1,0 +1,504 @@
+.top {
+  &--kv {
+    width: get_vw(782);
+    margin: 0 auto get_vw(20);
+    position: relative;
+    height: get_vw(1114);
+    z-index: 2;
+    overflow: hidden;
+
+    @include max-screen {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    @include min-screen() {
+      margin: 0 auto;
+      height: auto;
+      padding-right: get_vw(220, $vp-pc);
+      width: get_vw(1118, $vp-pc);
+      margin-bottom: get_vw(-60, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      padding-right: 220px;
+      width: 1118px;
+      margin-bottom: -60px;
+    }
+
+    &__logo {
+      position: absolute;
+      bottom: get_vw(-70);
+      left: calc(50% - get_vw(342));
+      width: get_vw(780);
+
+      @include min-screen() {
+        width: get_vw(592, $vp-pc);
+        bottom: get_vw(19, $vp-pc);
+        left: calc(50% - get_vw(255, $vp-pc));
+      }
+
+      @include min-screen(1400px) {
+        width: 592px;
+        bottom: 19px;
+        left: calc(50% - 255px);
+      }
+    }
+  }
+
+  &--link {
+    display: flex;
+    width: get_vw(730);
+    flex-wrap: wrap;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
+    z-index: 100;
+    margin-top: 0;
+
+    @include min-screen() {
+      width: get_vw(1100, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      width: 1100px;
+    }
+
+    &__item {
+      @include max-screen() {
+        &:nth-child(n + 3) {
+          margin-top: get_vw(20);
+        }
+      }
+    }
+
+    &__link {
+      display: block;
+      width: get_vw(360);
+      font-size: 0;
+      @include hover_up();
+
+      @include min-screen() {
+        width: get_vw(264, $vp-pc);
+      }
+
+      @include min-screen(1400px) {
+        width: 264px;
+      }
+    }
+  }
+
+  &--info {
+    margin-top: get_vw(50);
+
+    @include min-screen() {
+      margin-top: get_vw(60, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      margin-top: 60px;
+    }
+
+    &__header {
+
+      &--txt {
+        width: get_vw(400);
+        height: get_vw(30);
+
+        @include min-screen() {
+          width: get_vw(360, 1100);
+          height: get_vw(28, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 360px;
+          height: 28px;
+        }
+      }
+    }
+
+    &__wrapper {
+      position: relative;
+    }
+
+    &__container {
+      width: get_vw(600);
+      margin-top: get_vw(50);
+
+      @include min-screen() {
+        width: get_vw(700, 1100);
+        margin-top: get_vw(40, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 700px;
+        margin-top: 40px;
+      }
+    }
+
+    &__arrow {
+      width: get_vw(70);
+      height: get_vw(70);
+      background-color: $color-swiperArrow;
+      border-radius: get_vw(100);
+      transition: 300ms;
+
+      @include min-screen() {
+        width: get_vw(50, 1100);
+        height: get_vw(50, 1100);
+
+        &:hover {
+          background-color: #cccccc;
+        }
+      }
+
+      @include min-screen(1100px) {
+        width: 50px;
+        height: 50px;
+      }
+
+      &.prev {
+        transform: scale(-1, 1);
+        left: get_vw(10);
+
+        @include min-screen() {
+          left: get_vw(30, 1100);
+        }
+
+        @include min-screen(1100px) {
+          left: 30px;
+        }
+      }
+
+      &.next {
+        right: get_vw(10);
+
+        @include min-screen() {
+          right: get_vw(30, 1100);
+        }
+
+        @include min-screen(1400px) {
+          right: 30px;
+        }
+      }
+
+      &:after {
+        display: block;
+        content: "";
+        background-image: url(../img/common/arrow.svg);
+        background-size: cover;
+        width: get_vw(50);
+        height: get_vw(50);
+
+        @include min-screen() {
+          width: get_vw(40, 1100);
+          height: get_vw(40, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 40px;
+          height: 40px;
+        }
+      }
+    }
+
+    &__pagination {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      margin-top: get_vw(40);
+
+      @include min-screen() {
+        margin-top: get_vw(40, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin-top: 40px;
+      }
+
+      & .swiper-pagination-bullet {
+        background-color: #cccccc;
+        opacity: 1;
+        width: get_vw(16);
+        height: get_vw(16);
+        margin: 0 get_vw(5);
+
+        @include min-screen() {
+          width: get_vw(16, 1100);
+          height: get_vw(16, 1100);
+          margin: 0 get_vw(5, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 16px;
+          height: 16px;
+          margin: 0 5px;
+        }
+      }
+
+      & .swiper-pagination-bullet-active {
+        background-color: $color-swiper;
+      }
+    }
+
+    &__btn {
+      margin-top: get_vw(40);
+
+      @include max-screen {
+        width: get_vw(460);
+      }
+
+      @include min-screen() {
+        margin-top: get_vw(40, 1100);
+      }
+
+      @include min-screen(1100px) {
+        margin-top: 40px;
+      }
+
+      &.blank {
+        &:after {
+          right: get_vw(35);
+
+          @include min-screen() {
+            right: get_vw(30, 1100);
+          }
+
+          @include min-screen(1100px) {
+            right: 30px;
+          }
+        }
+      }
+
+      &.customer {
+        justify-content: flex-start;
+        padding-left: get_vw(23);
+
+        @include min-screen() {
+          padding-left: get_vw(32, 1100);
+        }
+
+        @include min-screen(1100px) {
+          padding-left: 32px;
+        }
+      }
+    }
+  }
+
+  &--update {
+    margin-top: get_vw(50);
+
+    @include min-screen() {
+      margin-top: get_vw(60, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      margin-top: 60px;
+    }
+
+    &__header {
+      &--txt {
+        width: get_vw(325);
+        height: get_vw(35);
+
+        @include min-screen() {
+          width: get_vw(288, 1100);
+          height: get_vw(28, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 288px;
+          height: 28px;
+        }
+      }
+    }
+
+    &__box {
+      width: get_vw(600);
+      height: get_vw(520);
+      margin: get_vw(70) auto 0;
+      overflow: scroll;
+      padding-right: get_vw(20);
+
+      @include min-screen() {
+        width: get_vw(620, 1100);
+        height: get_vw(190, 1100);
+        margin: get_vw(40, 1100) auto 0;
+        overflow: scroll;
+        padding-right: get_vw(20, 1100);
+      }
+
+      @include min-screen(1100px) {
+        width: 620px;
+        height: 190px;
+        margin: 40px auto 0;
+        overflow: scroll;
+        padding-right: 20px;
+      }
+
+      &::-webkit-scrollbar {
+        width: get_vw(20);
+
+        @include min-screen() {
+          width: get_vw(10, 1100);
+        }
+
+        @include min-screen(1400px) {
+          width: 10px;
+        }
+      }
+
+      &::-webkit-scrollbar-track {
+        background: transparent;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        background: $color-slider;
+        border-radius: 100px;
+      }
+    }
+
+    &__list {}
+
+    &__item {
+      width: 100%;
+      padding-bottom: get_vw(40);
+      border-bottom: 1px solid #000;
+
+      @include min-screen() {
+        display: flex;
+        padding-bottom: get_vw(20, 1100);
+      }
+
+      @include min-screen(1400px) {
+        padding-bottom: 20px;
+      }
+
+      &:last-child {
+        border: none;
+      }
+
+      &:not(:first-child) {
+        margin-top: get_vw(30);
+
+        @include min-screen() {
+          margin-top: get_vw(30, 1100);
+        }
+
+        @include min-screen(1400px) {
+          margin-top: 30px;
+        }
+      }
+    }
+
+    &__time {
+      color: $color-time;
+      font-size: get_vw(28);
+      font-weight: 900;
+
+      @include min-screen() {
+        font-size: get_vw(16, 1100);
+        margin-top: get_vw(5, 1100);
+      }
+
+      @include min-screen(1100px) {
+        font-size: 16px;
+        margin-top: 5px;
+      }
+    }
+
+    &__text {
+      font-size: get_vw(24);
+      margin-top: get_vw(15);
+      line-height: 1.5;
+      color: #0b3871;
+
+      @include min-screen() {
+        font-size: get_vw(14, 1100);
+        margin-left: get_vw(30, 1100);
+        margin-top: 0;
+      }
+
+      @include min-screen(1100px) {
+        font-size: 14px;
+        margin-left: 30px;
+      }
+
+      &>a {
+        text-decoration: underline;
+        color: $color-time;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  &--fb {
+    margin-top: get_vw(50);
+
+    @include min-screen() {
+      margin-top: get_vw(60, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      margin-top: 60px;
+    }
+
+    &__header {
+      &--txt {
+        width: get_vw(204);
+        height: get_vw(35);
+
+        @include min-screen() {
+          width: get_vw(180, 1100);
+          height: get_vw(28, 1100);
+        }
+
+        @include min-screen(1100px) {
+          width: 180px;
+          height: 28px;
+        }
+      }
+    }
+
+    &__page {
+      margin: get_vw(50) auto 0;
+      width: get_vw(500);
+      max-width: 340px;
+
+      @include min-screen() {
+        margin-top: get_vw(50, 1100);
+        width: get_vw(500, 1100);
+        max-width: 500px;
+      }
+
+      @include min-screen(1100px) {
+        margin-top: 50px;
+      }
+    }
+  }
+
+  &--chu {
+    display: block;
+    width: get_vw(630);
+    margin: get_vw(80) auto 0;
+    padding-left: get_vw(10);
+    font-size: 0;
+    @include hover_up();
+
+    @include min-screen() {
+      width: get_vw(328, $vp-pc);
+      margin: get_vw(80, $vp-pc) auto 0;
+      padding-left: get_vw(10, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      width: 328px;
+      margin: 80px auto 0;
+      padding-left: 10px;
+    }
+  }
+}

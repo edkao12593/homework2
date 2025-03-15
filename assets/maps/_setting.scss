@@ -1,0 +1,138 @@
+@charset "utf-8";
+
+// ===================================================================
+// 設定
+// ===================================================================
+
+//breakpoint
+$bp_sp:769px;
+// photoshopのカンバスサイズ
+$vp_pc:1400;
+$vp_sp:800;
+
+
+// font
+@import url('https://fonts.googleapis.com/css2?family=M+PLUS+1p:wght@400;500;700;800;900&display=swap');
+$font-base:'M PLUS 1p',
+sans-serif;
+// Regular 400
+// Medium 500
+// Bold 700
+// ExBold 800
+
+// color
+
+// 使用箇所: 言語変更
+$color-language:#fff;
+$color-languageArrow:#ffba42;
+$color-languageBG:#ffba42;
+$color-languageHover:#e84472;
+
+// 使用箇所: ナビ
+$color-nav:#0b3871;
+
+// 使用箇所: 言語変更
+$color-boxTop:#053264;
+$color-boxBottom:#ffba42;
+
+// 使用箇所: ヘッダー
+$color-header:#0b3871;
+$color-header__icon:#f8b73d;
+
+// 使用箇所: フッター
+$color-footer:#0b3871;
+$color-footerBG:#fff;
+
+// 使用箇所: スライダー
+$color-swiper:#e72139;
+$color-swiperArrow:#053264;
+$color-bullet:#ccc;
+
+// 使用箇所: ボタン
+$color-btn:#e72139;
+$color-btnShadow:#a51426;
+$color-btnHowto:#f8b73d;
+$color-btnFunction:#e84472;
+$color-btnFunction2:#f8b73d;
+
+// 使用箇所: スライダー
+$color-slider:#e72139;
+$color-time:#e72139;
+
+// 使用箇所: スライダー
+$color-playText:#e72139;
+
+// 使用箇所: ダウンロード
+$color-download:#e72139;
+$color-off:#4b4b4b;
+$color-arrowOff:#dcdcdc;
+
+// 使用箇所: song_listボタン
+$color-songBtn:#4b4b4b;
+$color-songText:#fff;
+$color-songCheck:#e72139;
+$color-songOpen:#e72139;
+$color-new:#fb5f99;
+$color-pops_anime:#ff972a;
+$color-niconico:#02c8d3;
+$color-toho:#ad59ee;
+$color-variety:#4be070;
+$color-maimai:#f64849;
+$color-gekichu:#3584fe;
+$color-utage:#dc39b8;
+
+// 使用箇所: ランキングページ
+$color-rankText: #0b3871;
+$color-selectBorder: #ececec;
+$color-selectBtn: #e72139;
+$color-tagBG: #0b3871;
+$color-tagTxt: #fff;
+$color-listLine: #e5e5e5;
+
+@mixin songs_bg {
+  &.new {
+    background-color: $color-new;
+  }
+
+  &.pops_anime {
+    background-color: $color-pops_anime;
+  }
+
+  &.niconico {
+    background-color: $color-niconico;
+  }
+
+  &.toho {
+    background-color: $color-toho;
+  }
+
+  &.variety {
+    background-color: $color-variety;
+  }
+
+  &.maimai {
+    background-color: $color-maimai;
+  }
+
+  &.gekichu {
+    background-color: $color-gekichu;
+  }
+
+  &.utage {
+    background-color: $color-utage;
+  }
+}
+
+input[type="text"] {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: #fff;
+  outline: 0;
+}
+
+// バージョンパーツ
+$versionPath : "../img/buddies/";
+$bg_item_pink : #e84472;
+$bg_item_yellow : #f8b73b;
+$bg_item_white : #fff;

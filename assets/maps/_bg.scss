@@ -1,0 +1,1324 @@
+@keyframes goleft {
+  0% {
+    background-position: 0% 0px;
+  }
+
+  5% {
+    background-position: 5% 0px;
+  }
+
+  10% {
+    background-position: 10% 0px;
+  }
+
+  15% {
+    background-position: 15% 0px;
+  }
+
+  20% {
+    background-position: 20% 0px;
+  }
+
+  25% {
+    background-position: 25% 0px;
+  }
+
+  30% {
+    background-position: 30% 0px;
+  }
+
+  35% {
+    background-position: 35% 0px;
+  }
+
+  40% {
+    background-position: 40% 0px;
+  }
+
+  45% {
+    background-position: 45% 0px;
+  }
+
+  50% {
+    background-position: 50% 0px;
+  }
+
+  55% {
+    background-position: 55% 0px;
+  }
+
+  60% {
+    background-position: 60% 0px;
+  }
+
+  65% {
+    background-position: 65% 0px;
+  }
+
+  70% {
+    background-position: 70% 0px;
+  }
+
+  75% {
+    background-position: 75% 0px;
+  }
+
+  80% {
+    background-position: 80% 0px;
+  }
+
+  85% {
+    background-position: 85% 0px;
+  }
+
+  90% {
+    background-position: 90% 0px;
+  }
+
+  95% {
+    background-position: 95% 0px;
+  }
+
+  100% {
+    background-position: 100% 0px;
+  }
+}
+
+@keyframes speakerBound {
+  0% {
+    transform: translate3d(-50%, 0.5%, 0);
+  }
+
+  to {
+    transform: translate3d(-50%, 1.5%, 0);
+  }
+}
+
+@keyframes bgStream {
+  0% {
+    top: -150%;
+  }
+
+  100% {
+    top: 150%;
+    height: 0;
+  }
+}
+
+@keyframes bgRay {
+  0% {
+    top: -30%;
+  }
+
+  100% {
+    top: 100%;
+    height: 0;
+  }
+}
+
+@keyframes bgLightning {
+  0% {
+    opacity: 1;
+    clip-path: polygon(0 0, 100% 0, 100% 0, 0 0);
+    filter: hue-rotate(90deg);
+  }
+
+  5% {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+    filter: hue-rotate(0deg);
+  }
+
+  20%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes shine {
+  0% {
+    opacity: 0;
+    rotate: 0turn;
+    scale: .7;
+  }
+
+  75% {
+    opacity: 0;
+    rotate: 0turn;
+    scale: .7;
+  }
+
+  80%,
+  85% {
+    opacity: 1;
+  }
+
+  to {
+    scale: 1.5;
+    opacity: 0;
+    rotate: -270deg;
+  }
+}
+
+
+.bg {
+  pointer-events: none;
+
+  &.buddies {
+    background: transparent url(#{$versionPath}bg/bg_pattern_pink.jpg) repeat;
+    background-size: get_vw(316);
+    background-position: get_vw(-6) get_vw(-6);
+    width: 100%;
+    height: 100%;
+    padding: get_vw(20);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    overflow: hidden;
+
+    @include min-screen() {
+      background-size: get_vw(280, $vp-pc);
+      background-position: 0 0;
+      padding: get_vw(20, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      background-size: 280px;
+      padding: 20px;
+    }
+  }
+
+  &--wrap {
+    border-radius: get_vw(34);
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    @include min-screen() {
+      border-radius: get_vw(24, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      border-radius: 24px;
+    }
+  }
+
+  &--pattern {
+    background: transparent url(#{$versionPath}bg/bg_pattern.jpg) repeat;
+    background-size: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    animation: goleft 16860ms steps(1, end) infinite;
+
+    @include min-screen() {
+      background-size: get_vw(400, $vp-pc);
+      width: 200%;
+    }
+
+    @include min-screen(1400px) {
+      background-size: 400px;
+    }
+  }
+
+  &--line {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(#{$versionPath}bg/bg_shade.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50%;
+
+    @include min-screen() {
+      background-image: url(#{$versionPath}bg/bg_shade_pc.png);
+    }
+  }
+
+  &--parts {
+    bottom: 0;
+    z-index: 100;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    perspective: 80px;
+    position: relative;
+    overflow: hidden;
+
+    &__inner {
+      overflow: hidden;
+      margin: 0 auto;
+      width: 55%;
+      height: 110%;
+      transform: scale(2) rotateX(157deg);
+
+      @include min-screen() {
+        width: 100%;
+        height: 100%;
+        transform: scale(2) rotateX(167deg);
+      }
+    }
+
+    &__item {
+      position: absolute;
+      margin-left: -5px;
+      width: 3px;
+      clip-path: polygon(50% 0, 100% 75%, 50% 100%, 0 75%);
+      animation: bgRay 5s infinite both cubic-bezier(.65, 0, .35, 1);
+
+      @include min-screen() {
+        width: 5px;
+        animation: bgRay 3s infinite both cubic-bezier(.65, 0, .35, 1);
+      }
+
+      &.s1 {
+        background-color: $bg_item_pink;
+        height: 181px;
+        left: 27%;
+        animation-delay: 1.8s;
+
+        @include min-screen() {
+          background-color: $bg_item_yellow;
+          height: 149px;
+          left: 37%;
+          animation-delay: 1s;
+        }
+      }
+
+      &.s2 {
+        background-color: $bg_item_white;
+        height: 174px;
+        left: 67%;
+        animation-delay: 0.8s;
+
+        @include min-screen() {
+          height: 247px;
+          left: 34%;
+          animation-delay: 2s;
+        }
+      }
+
+      &.s3 {
+        background-color: $bg_item_yellow;
+        height: 268px;
+        left: 79%;
+        animation-delay: 1.5s;
+
+        @include min-screen() {
+          background-color: $bg_item_white;
+          height: 189px;
+          left: 14%;
+          animation-delay: 0.6s;
+        }
+      }
+
+      &.s4 {
+        background-color: $bg_item_pink;
+        height: 119px;
+        left: 55%;
+        animation-delay: 1s;
+
+        @include min-screen() {
+          height: 249px;
+          left: 39%;
+          animation-delay: 0.7s;
+        }
+      }
+
+      &.s5 {
+        background-color: $bg_item_yellow;
+        height: 145px;
+        left: 92%;
+        animation-delay: 0.9s;
+
+        @include min-screen() {
+          background-origin: $bg_item_white;
+          height: 284px;
+          left: 16%;
+          animation-delay: 0.8s;
+        }
+      }
+
+      &.s6 {
+        background-color: $bg_item_yellow;
+        height: 290px;
+        left: 30%;
+        animation-delay: 1.1s;
+
+        @include min-screen() {
+          background-origin: $bg_item_white;
+          height: 255px;
+          left: 63%;
+          animation-delay: 0.6s;
+        }
+      }
+
+      &.s7 {
+        background-color: $bg_item_white;
+        height: 223px;
+        left: 82%;
+        animation-delay: 0.8s;
+
+        @include min-screen() {
+          background-origin: $bg_item_pink;
+          height: 168px;
+          left: 78%;
+          animation-delay: 1.1s;
+        }
+      }
+
+      &.s8 {
+        background-color: $bg_item_white;
+        height: 134px;
+        left: 23%;
+        animation-delay: 1.2s;
+
+        @include min-screen() {
+          height: 110px;
+          left: 81%;
+          animation-delay: 1.3s;
+        }
+      }
+
+      &.s9 {
+        background-color: $bg_item_white;
+        height: 218px;
+        left: 6%;
+        animation-delay: 1.8s;
+
+        @include min-screen() {
+          background-origin: $bg_item_pink;
+          height: 239px;
+          left: 45%;
+          animation-delay: 1s;
+        }
+      }
+
+      &.s10 {
+        background-color: $bg_item_yellow;
+        height: 255px;
+        left: 41%;
+        animation-delay: 1.6s;
+
+        @include min-screen() {
+          height: 128px;
+          left: 72%;
+          animation-delay: 1.8s;
+        }
+      }
+
+      &.s11 {
+        background-color: $bg_item_white;
+        height: 189px;
+        left: 44%;
+        animation-delay: 0.8s;
+
+        @include min-screen() {
+          background-color: $bg_item_yellow;
+          height: 155px;
+          left: 96%;
+          animation-delay: 1.1s;
+        }
+      }
+
+      &.s12 {
+        background-color: $bg_item_white;
+        height: 217px;
+        left: 80%;
+        animation-delay: 1s;
+
+        @include min-screen() {
+          background-color: $bg_item_yellow;
+          height: 129px;
+          left: 91%;
+          animation-delay: 0.1s;
+        }
+      }
+
+      &.s13 {
+        background-color: $bg_item_white;
+        height: 277px;
+        left: 49%;
+        animation-delay: 2.7s;
+
+        @include min-screen() {
+          background-color: $bg_item_pink;
+          height: 192px;
+          left: 27%;
+          animation-delay: 0.8s;
+        }
+      }
+
+      &.s14 {
+        background-color: $bg_item_pink;
+        height: 236px;
+        left: 53%;
+        animation-delay: 2s;
+
+        @include min-screen() {
+          height: 134px;
+          left: 0%;
+          animation-delay: 0.8s;
+        }
+      }
+
+      &.s15 {
+        background-color: $bg_item_pink;
+        height: 200px;
+        left: 37%;
+        animation-delay: 4.5s;
+
+        @include min-screen() {
+          background-color: $bg_item_white;
+          height: 281px;
+          left: 33%;
+          animation-delay: 0.5s;
+        }
+      }
+
+      &.s16 {
+        background-color: $bg_item_yellow;
+        height: 119px;
+        left: 69%;
+        animation-delay: 2.1s;
+
+        @include min-screen() {
+          height: 210px;
+          left: 64%;
+          animation-delay: 0s;
+        }
+      }
+
+      &.s17 {
+        background-color: $bg_item_pink;
+        height: 130px;
+        left: 39%;
+        animation-delay: 2.9s;
+
+        @include min-screen() {
+          height: 186px;
+          left: 8%;
+          animation-delay: 1.4s;
+        }
+      }
+
+      &.s18 {
+        background-color: $bg_item_pink;
+        height: 104px;
+        left: 11%;
+        animation-delay: 1.6s;
+
+        @include min-screen() {
+          background-color: $bg_item_white;
+          height: 107px;
+          left: 45%;
+          animation-delay: 1.2s;
+        }
+      }
+
+      &.s19 {
+        background-color: $bg_item_white;
+        height: 116px;
+        left: 47%;
+        animation-delay: 3.5s;
+
+        @include min-screen() {
+          background-color: $bg_item_pink;
+          height: 148px;
+          left: 51%;
+          animation-delay: 5.2s;
+        }
+      }
+
+      &.s20 {
+        background-color: $bg_item_white;
+        height: 175px;
+        left: 82%;
+        animation-delay: 3.2s;
+
+        @include min-screen() {
+          background-color: $bg_item_yellow;
+          height: 251px;
+          left: 60%;
+          animation-delay: 3s;
+        }
+      }
+
+      &.s21 {
+        background-color: $bg_item_white;
+        height: 205px;
+        left: 96%;
+        animation-delay: 3.4s;
+
+        @include min-screen() {
+          background-color: $bg_item_pink;
+          height: 109px;
+          left: 86%;
+          animation-delay: 2.3s;
+        }
+      }
+
+      &.s22 {
+        background-color: $bg_item_pink;
+        height: 188px;
+        left: 37%;
+        animation-delay: 3.3s;
+
+        @include min-screen() {
+          background-color: $bg_item_white;
+          height: 298px;
+          left: 87%;
+          animation-delay: 5.5s;
+        }
+      }
+
+      &.s23 {
+        background-color: $bg_item_yellow;
+        height: 272px;
+        left: 84%;
+        animation-delay: 3.7s;
+
+        @include min-screen() {
+          height: 186px;
+          left: 42%;
+          animation-delay: 4.7s;
+        }
+      }
+
+      &.s24 {
+        background-color: $bg_item_yellow;
+        height: 102px;
+        left: 89%;
+        animation-delay: 1.9s;
+
+        @include min-screen() {
+          background-color: $bg_item_pink;
+          height: 238px;
+          left: 57%;
+          animation-delay: 4.4s;
+        }
+      }
+
+      &.s25 {
+        @include min-screen() {
+          background-color: $bg_item_white;
+          height: 283px;
+          left: 50%;
+          animation-delay: 5.6s;
+        }
+      }
+
+      &.s26 {
+        @include min-screen() {
+          background-color: $bg_item_yellow;
+          height: 136px;
+          left: 41%;
+          animation-delay: 2.8s;
+        }
+      }
+
+      &.s27 {
+        @include min-screen() {
+          background-color: $bg_item_white;
+          height: 102px;
+          left: 2%;
+          animation-delay: 3.2s;
+        }
+      }
+
+      &.s28 {
+        @include min-screen() {
+          background-color: $bg_item_pink;
+          height: 127px;
+          left: 6%;
+          animation-delay: 1.1s;
+        }
+      }
+
+      &.s29 {
+        @include min-screen() {
+          background-color: $bg_item_yellow;
+          height: 138px;
+          left: 12%;
+          animation-delay: 4.9s;
+        }
+      }
+
+      &.s30 {
+        @include min-screen() {
+          background-color: $bg_item_pink;
+          height: 161px;
+          left: 41%;
+          animation-delay: 2.5s;
+        }
+      }
+
+      &.s31 {
+        @include min-screen() {
+          background-color: $bg_item_yellow;
+          height: 195px;
+          left: 83%;
+          animation-delay: 1.1s;
+        }
+      }
+
+      &.s32 {
+        @include min-screen() {
+          background-color: $bg_item_yellow;
+          height: 286px;
+          left: 58%;
+          animation-delay: 3.1s;
+        }
+      }
+
+      &.s33 {
+        @include min-screen() {
+          background-color: $bg_item_pink;
+          height: 210px;
+          left: 34%;
+          animation-delay: 3.2s;
+        }
+      }
+    }
+
+    &__thunder {
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      margin-left: -5px;
+      filter: hue-rotate(90deg);
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      image-rendering: -webkit-optimize-contrast;
+      scale: .4;
+      animation: bgLightning 10s infinite both cubic-bezier(.65, 0, .35, 1);
+
+      &.yellow {
+        background-image: url(#{$versionPath}bg/bg_thunder_y.png);
+        transform: rotate(20deg);
+        width: 75px;
+        height: 190px;
+
+        @include min-screen() {
+          width: 125px;
+          height: 316px;
+        }
+      }
+
+      &.green {
+        background-image: url(#{$versionPath}bg/bg_thunder_m.png);
+        transform: rotate(40deg);
+        width: 90px;
+        height: 106px;
+
+        @include min-screen() {
+          width: 150px;
+          height: 177px;
+        }
+      }
+
+      &.pink {
+        background-image: url(#{$versionPath}bg/bg_thunder_p.png);
+        transform: rotate(-20deg);
+        width: 62px;
+        height: 194px;
+
+        @include min-screen() {
+          width: 103px;
+          height: 323px;
+        }
+      }
+
+      &.t1 {
+        top: 40%;
+        left: 11%;
+        animation-delay: 1.3s;
+
+        @include min-screen() {
+          top: 38%;
+          left: 39%;
+          animation-delay: 5.3s;
+        }
+      }
+
+      &.t2 {
+        top: 37%;
+        left: 70%;
+        animation-delay: 1.4s;
+
+        @include min-screen() {
+          top: 21%;
+          left: 66%;
+          animation-delay: 1.6s;
+        }
+      }
+
+      &.t3 {
+        top: 34%;
+        left: 39%;
+        animation-delay: 5.6s;
+
+        @include min-screen() {
+          top: 35%;
+          left: 56%;
+          animation-delay: 6.2s;
+        }
+      }
+
+      &.t4 {
+        top: 27%;
+        left: 64%;
+        animation-delay: 1.5s;
+
+        @include min-screen() {
+          top: 48%;
+          left: 59%;
+          animation-delay: 5.6s;
+        }
+      }
+
+      &.t5 {
+        top: 34%;
+        left: 39%;
+        animation-delay: 4.6s;
+
+        @include min-screen() {
+          top: 21%;
+          left: 74%;
+          animation-delay: 5.3s;
+        }
+      }
+
+      &.t6 {
+        top: 50%;
+        left: 52%;
+        animation-delay: 4s;
+
+        @include min-screen() {
+          top: 31%;
+          left: 34%;
+          animation-delay: 0.3s;
+        }
+      }
+
+      &.t7 {
+        top: 39%;
+        left: 26%;
+        animation-delay: 5.1s;
+
+        @include min-screen() {
+          top: 48%;
+          left: 65%;
+          animation-delay: 0.2s;
+        }
+      }
+
+      &.t8 {
+        top: 33%;
+        left: 50%;
+        animation-delay: 2.7s;
+
+        @include min-screen() {
+          top: 41%;
+          left: 29%;
+          animation-delay: 0.7s;
+        }
+      }
+
+      &.t9 {
+        top: 51%;
+        left: 38%;
+        animation-delay: 5.5s;
+
+        @include min-screen() {
+          top: 45%;
+          left: 51%;
+          animation-delay: 2.9s;
+        }
+      }
+    }
+  }
+
+  &--mirrorball {
+    width: get_vw(437);
+    height: get_vw(204);
+    background-image: url(#{$versionPath}bg/bg_mirrorball.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: auto;
+    z-index: 100;
+
+    @include min-screen() {
+      background-image: url(#{$versionPath}bg/bg_mirrorball_pc.png);
+      width: get_vw(322, $vp-pc);
+      height: get_vw(100, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      width: 322px;
+      height: 100px;
+    }
+  }
+
+  &--speaker {
+    background-image: url(#{$versionPath}bg/bg_speaker_light.png);
+    background-repeat: repeat-x;
+    background-position: 50%;
+    background-size: cover;
+    position: absolute;
+    left: 50%;
+    bottom: get_vw(220);
+    margin: auto;
+    width: 100%;
+    height: get_vw(320);
+    z-index: 100;
+    animation: speakerBound .2s infinite alternate;
+
+    @include min-screen() {
+      background-image: url(#{$versionPath}bg/bg_speaker_light_pc.png);
+      background-size: get_vw(1498, $vp-pc) auto;
+      bottom: get_vw(70, $vp-pc);
+      height: get_vw(378, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      background-size: 1498px auto;
+      bottom: 70px;
+      height: 378px;
+    }
+  }
+
+  &--stream {
+    background-color: #0e325d;
+    width: 100%;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    transform-style: preserve-3d;
+    perspective: 40px;
+    overflow: hidden;
+    z-index: 100;
+    height: get_vw(220);
+
+    @include min-screen() {
+      height: get_vw(80, $vp-pc);
+    }
+
+    @include min-screen(1400px) {
+      height: 80px;
+    }
+
+    &__inner {
+      width: 100%;
+      height: 100%;
+      margin: 0 auto;
+      position: relative;
+      transform: scale(2) rotateX(40deg);
+      overflow: hidden;
+    }
+
+    &__item {
+      position: absolute;
+      top: 0;
+      margin-left: -5px;
+      width: 10px;
+      height: 150px;
+      border-radius: 30px;
+      background: #fff;
+      transform: scale(.3);
+      animation: bgStream 1s linear infinite both;
+
+      @include min-screen() {
+        transform: scale(.5);
+      }
+
+      &.i1 {
+        left: 5%;
+        animation-delay: 1.5s;
+
+        @include min-screen() {
+          animation-delay: 0.4s;
+        }
+      }
+
+      &.i2 {
+        left: 10%;
+        animation-delay: 0.3s;
+
+        @include min-screen() {
+          animation-delay: 0.2s;
+        }
+      }
+
+      &.i3 {
+        left: 15%;
+        animation-delay: 1.2s;
+      }
+
+      &.i4 {
+        left: 20%;
+        animation-delay: 1.7s;
+
+        @include min-screen() {
+          animation-delay: 1.1s;
+        }
+      }
+
+      &.i5 {
+        left: 25%;
+        animation-delay: 0.1s;
+
+        @include min-screen() {
+          animation-delay: 1.4s;
+        }
+      }
+
+      &.i6 {
+        left: 30%;
+        animation-delay: 1.1s;
+
+        @include min-screen() {
+          animation-delay: 0.8s;
+        }
+      }
+
+      &.i7 {
+        left: 35%;
+        animation-delay: 0.3s;
+
+        @include min-screen() {
+          animation-delay: 0.7s;
+        }
+      }
+
+      &.i8 {
+        left: 40%;
+        animation-delay: 1.2s;
+
+        @include min-screen() {
+          animation-delay: 1.7s;
+        }
+      }
+
+      &.i9 {
+        left: 45%;
+        animation-delay: 1.8s;
+
+        @include min-screen() {
+          animation-delay: 1.7s;
+        }
+      }
+
+      &.i10 {
+        left: 46%;
+        animation-delay: 1.3s;
+
+        @include min-screen() {
+          animation-delay: 0.8s;
+        }
+      }
+
+      &.i11 {
+        left: 55%;
+        animation-delay: 0.9s;
+
+        @include min-screen() {
+          animation-delay: 0s;
+        }
+      }
+
+      &.i12 {
+        left: 60%;
+        animation-delay: 0.6s;
+
+        @include min-screen() {
+          animation-delay: 0.9s;
+        }
+      }
+
+      &.i13 {
+        left: 65%;
+        animation-delay: 0.4s;
+
+        @include min-screen() {
+          animation-delay: 0s;
+        }
+      }
+
+      &.i14 {
+        left: 70%;
+        animation-delay: 1.1s;
+
+        @include min-screen() {
+          animation-delay: 1.9s;
+        }
+      }
+
+      &.i15 {
+        left: 75%;
+        animation-delay: 0.2s;
+
+        @include min-screen() {
+          animation-delay: 1.2s;
+        }
+      }
+
+      &.i16 {
+        left: 80%;
+        animation-delay: 2s;
+      }
+
+      &.i17 {
+        left: 85%;
+        animation-delay: 0.6s;
+
+        @include min-screen() {
+          animation-delay: 1s;
+        }
+      }
+
+      &.i18 {
+        left: 90%;
+        animation-delay: 0.6s;
+
+        @include min-screen() {
+          animation-delay: 0.5s;
+        }
+      }
+
+      &.i19 {
+        left: 95%;
+        animation-delay: 0.2s;
+
+        @include min-screen() {
+          animation-delay: 0s;
+        }
+      }
+
+      &.i20 {
+        left: 100%;
+        animation-delay: 0.3s;
+
+        @include min-screen() {
+          animation-delay: 1.4s;
+        }
+      }
+    }
+  }
+
+  &--star {
+    margin: 0 auto;
+    position: absolute;
+    overflow: hidden;
+    z-index: 101;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &__item {
+      position: absolute;
+      background-size: contain;
+      top: 0;
+      left: 0;
+      animation: shine infinite both cubic-bezier(.65, 0, .35, 1);
+      animation-duration: 5s;
+      transform-origin: center;
+      width: get_vw(152);
+      height: get_vw(152);
+
+      @include min-screen() {
+        width: get_vw(126, $vp-pc);
+        height: get_vw(126, $vp-pc);
+      }
+
+      @include min-screen(1400px) {
+        width: 126px;
+        height: 126px;
+      }
+
+      &.blue {
+        background-image: url(#{$versionPath}bg/bg_star_b.png);
+
+        &.i1 {
+          top: 20%;
+          left: 36%;
+          scale: 0.2;
+          animation-delay: 4.9s;
+
+          @include min-screen() {
+            top: 5%;
+            left: 90%;
+          }
+        }
+
+        &.i2 {
+          top: 57%;
+          left: 7%;
+          scale: 0.1;
+          animation-delay: 0.8s;
+
+          @include min-screen() {
+            top: 27%;
+            animation-delay: 2.8s;
+          }
+        }
+
+        &.i3 {
+          top: 5%;
+          left: 34%;
+          scale: 0.6;
+          animation-delay: 6.5s;
+
+          @include min-screen() {
+            top: 90%;
+            left: 51%;
+            scale: 0.4;
+          }
+        }
+
+        &.i4 {
+          top: 36%;
+          left: 46%;
+          scale: 0.3;
+          animation-delay: 7.9s;
+
+          @include min-screen() {
+            display: none;
+          }
+        }
+
+        &.i5 {
+          top: 70%;
+          left: 20%;
+          scale: 0.8;
+          animation-delay: 3.8s;
+
+          @include min-screen() {
+            top: 40%;
+            left: 50%;
+            scale: 0.4;
+          }
+        }
+      }
+
+      &.pink {
+        background-image: url(#{$versionPath}bg/bg_star_p.png);
+
+        &.i6 {
+          top: 63%;
+          left: 7%;
+          scale: 0.2;
+          animation-delay: 2.4s;
+
+          @include min-screen() {
+            display: none;
+          }
+        }
+
+        &.i7 {
+          top: 73%;
+          left: 40%;
+          scale: 0.5;
+          animation-delay: 1.33s;
+        }
+
+        &.i8 {
+          top: 7%;
+          left: 74%;
+          scale: 0.2;
+          animation-delay: 6.7s;
+        }
+
+        &.i9 {
+          top: 38%;
+          left: 67%;
+          scale: 0.4;
+          animation-delay: 4.3s;
+
+          @include min-screen() {
+            top: 36%;
+            left: 92%;
+          }
+        }
+
+        &.i10 {
+          top: 95%;
+          left: 5%;
+          scale: 0.9;
+          animation-delay: 3.3s;
+        }
+      }
+
+      &.yellow {
+        background-image: url(#{$versionPath}bg/bg_star_y.png);
+
+        &.i11 {
+          top: 73%;
+          left: 86%;
+          scale: 0.9;
+          animation-delay: 1.7s;
+
+          @include min-screen() {
+            animation-delay: 2.7s;
+          }
+        }
+
+        &.i12 {
+          top: 91%;
+          left: 54%;
+          scale: 0.6;
+          animation-delay: 5.2s;
+
+          @include min-screen() {
+            top: 11%;
+            left: 50%;
+          }
+        }
+
+        &.i13 {
+          top: 49%;
+          left: 94%;
+          scale: 0.7;
+          animation-delay: 4.4s;
+
+          @include min-screen() {
+            display: none;
+          }
+        }
+
+        &.i14 {
+          top: 37%;
+          left: 33%;
+          scale: 0.6;
+          animation-delay: 1.2s;
+
+          @include min-screen() {
+            top: 47%;
+            left: 23%;
+            animation-delay: 7.2s;
+          }
+        }
+
+        &.i15 {
+          top: 2%;
+          left: 0%;
+          scale: 0.9;
+          animation-delay: 5.7s;
+        }
+      }
+    }
+  }
+}

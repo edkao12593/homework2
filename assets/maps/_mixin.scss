@@ -1,0 +1,81 @@
+@charset "utf-8";
+@import "setting";
+// ===================================================================
+// ミックスイン、@extend、CSS3など
+// ===================================================================
+
+// center
+@mixin center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+//
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+
+  @-moz-keyframes $animation-name {
+    @content;
+  }
+
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
+@mixin animation($animation-name) {
+  -webkit-animation: $animation-name;
+  -moz-animation: $animation-name;
+  animation: $animation-name;
+  -webkit-animation-fill-mode: both;
+  -moz-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/*
+@mixin fontsize($size: 24, $base: 16) {
+  font-size: $size + px;
+  font-size: ($size / $base) * 1rem;
+}
+*/
+
+// カンバスサイズからのフォントサイズ取得
+@function get_fz_vw($size, $viewport:$vp-sp) {
+  $rate: 100 / $viewport;
+  @return $rate * $size * 1vw;
+}
+
+// カンバスサイズからの横幅取得
+@function get_vw($size, $viewport:$vp-sp) {
+  @return calc($size / $viewport)*100vw;
+}
+
+// カンバスサイズからの縦幅取得
+@function get_vh($size, $viewport:$vp-sp) {
+  @return calc($size / $viewport)*100vh;
+}
+
+@mixin shadow() {
+  box-shadow: get_vw(10, $vp-sp) get_vw(10, $vp-sp) 0px rgba(0, 0, 0, .2);
+
+  @include min-screen() {
+    box-shadow: get_vw(10, $vp-pc) get_vw(10, $vp-pc) 0px rgba(0, 0, 0, .2);
+  }
+
+  @include min-screen(1400px) {
+    box-shadow: 10px 10px 0px rgba(0, 0, 0, .2);
+  }
+}
+
+@mixin hover_up() {
+  @include min-screen() {
+    transition: transform 300ms;
+
+    &:hover {
+      transform: translateY(-5%);
+    }
+  }
+}
