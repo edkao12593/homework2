@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(LatestUpdateApp());
@@ -95,16 +94,12 @@ class LatestUpdateHeader extends StatelessWidget {
         SizedBox(width: 8),
         Expanded(
           child: Center(
-            child: SvgPicture.asset(
-              'assets/svg/latest_updates.svg',
-              height: 35,
-              placeholderBuilder: (context) => Text(
-                'Latest Updates',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                    color:Color(0xFF0B3871)
-                ),
+            child: Text(
+              'Latest Updates',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color(0xFF0B3871),
               ),
             ),
           ),
@@ -181,8 +176,7 @@ class LatestUpdateList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      children:
-      updates.map((update) => LatestUpdateItem(data: update)).toList(),
+      children: updates.map((update) => LatestUpdateItem(data: update)).toList(),
     );
   }
 }

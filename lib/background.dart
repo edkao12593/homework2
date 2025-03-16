@@ -24,7 +24,6 @@ class BackgroundEffect extends StatefulWidget {
 class _BackgroundEffectState extends State<BackgroundEffect>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
-
   @override
   void initState() {
     super.initState();
@@ -44,7 +43,6 @@ class _BackgroundEffectState extends State<BackgroundEffect>
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        // 1. Full-screen gradient background.
         Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(

@@ -103,9 +103,9 @@ class FooterWidget extends StatelessWidget {
             padding: const EdgeInsets.all(16.0),
             child: Column(
               children: [
-                // External image link.
                 GestureDetector(
                   onTap: () {
+                    _launchURL('https://gamecenter-guide.sega.com');
                   },
                   child: Image.asset(
                     'assets/img/external.jpg',
@@ -127,6 +127,7 @@ class FooterWidget extends StatelessWidget {
                     SizedBox(width: 16),
                     GestureDetector(
                       onTap: () {
+                        _launchURL('https://sega.jp');
                       },
                       child: Image.asset(
                         'assets/img/footer/footer_logo.png',

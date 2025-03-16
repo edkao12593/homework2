@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(TopLinkIconsApp());
 
@@ -26,6 +27,15 @@ class TopLinkIconsApp extends StatelessWidget {
 class TopLinkIcons extends StatelessWidget {
   const TopLinkIcons({Key? key}) : super(key: key);
 
+  Future<void> _launchUrl(String urlString) async {
+    final Uri url = Uri.parse(urlString);
+    if (await canLaunchUrl(url)) {
+      await launchUrl(url, mode: LaunchMode.externalApplication);
+    } else {
+      throw 'Could not launch $urlString';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -43,15 +53,21 @@ class TopLinkIcons extends StatelessWidget {
           width: 150,
           fit: BoxFit.contain,
         ),
-        Image.asset(
-          'assets/img/top/btn_top_kop.png',
-          width: 150,
-          fit: BoxFit.contain,
+        GestureDetector(
+          onTap: () => _launchUrl('https://maimai.sega.jp/kop6th/'),
+          child: Image.asset(
+            'assets/img/top/btn_top_kop.png',
+            width: 150,
+            fit: BoxFit.contain,
+          ),
         ),
-        Image.asset(
-          'assets/img/top/btn_top_4.png',
-          width: 150,
-          fit: BoxFit.contain,
+        GestureDetector(
+          onTap: () => _launchUrl('https://maimaidx-eng.com/'),
+          child: Image.asset(
+            'assets/img/top/btn_top_4.png',
+            width: 150,
+            fit: BoxFit.contain,
+          ),
         ),
       ],
     );
