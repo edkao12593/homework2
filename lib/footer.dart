@@ -29,7 +29,6 @@ class FooterApp extends StatelessWidget {
 }
 
 class FooterWidget extends StatelessWidget {
-  // Helper function to launch URLs.
   Future<void> _launchURL(String url) async {
     final uri = Uri.parse(url);
     if (await canLaunchUrl(uri)) {
@@ -107,7 +106,6 @@ class FooterWidget extends StatelessWidget {
                 // External image link.
                 GestureDetector(
                   onTap: () {
-                    // Additional action can be added here if needed.
                   },
                   child: Image.asset(
                     'assets/img/external.jpg',
@@ -129,7 +127,6 @@ class FooterWidget extends StatelessWidget {
                     SizedBox(width: 16),
                     GestureDetector(
                       onTap: () {
-                        // Additional action can be added here if needed.
                       },
                       child: Image.asset(
                         'assets/img/footer/footer_logo.png',

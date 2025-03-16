@@ -93,7 +93,7 @@ class _LatestUpdateBoxState extends State<LatestUpdateBox> {
           LatestUpdateHeader(),
           SizedBox(height: 16),
           Container(
-            height: 120, // Adjust height as needed.
+            height: 120,
             child: Stack(
               children: [
                 PageView.builder(

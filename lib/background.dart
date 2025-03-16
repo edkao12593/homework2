@@ -28,7 +28,6 @@ class _BackgroundEffectState extends State<BackgroundEffect>
   @override
   void initState() {
     super.initState();
-    // A 20-second repeating animation for smooth continuous motion.
     _controller = AnimationController(
       vsync: this,
       duration: Duration(seconds: 20),
@@ -59,7 +58,6 @@ class _BackgroundEffectState extends State<BackgroundEffect>
             ),
           ),
         ),
-        // 2. Pattern overlay (repeating pattern with blend mode).
         Positioned.fill(
           child: Opacity(
             opacity: 0.3,
@@ -71,7 +69,6 @@ class _BackgroundEffectState extends State<BackgroundEffect>
             ),
           ),
         ),
-        // 3. Base shine layer.
         Positioned.fill(
           child: Image.asset(
             'assets/img/prism/bg/bg_shines_pc.png',
@@ -79,7 +76,6 @@ class _BackgroundEffectState extends State<BackgroundEffect>
             fit: BoxFit.cover,
           ),
         ),
-        // 4. Animated shine items.
         ShineItem(
           assetPath: 'assets/img/prism/bg/bg_diamond_pink.png',
           topPercent: 0.1,
@@ -120,7 +116,6 @@ class _BackgroundEffectState extends State<BackgroundEffect>
           animationType: AnimationType.star,
           controller: _controller,
         ),
-        // 5. Aurora layer with horizontal motion.
         Positioned(
           top: 0,
           left: 0,
@@ -140,7 +135,6 @@ class _BackgroundEffectState extends State<BackgroundEffect>
             },
           ),
         ),
-        // 6. Multiple clouds with varying speeds.
         CloudItem(
           assetPath: 'assets/img/prism/bg/bg_cloud_back_l.png',
           top: 50,
@@ -183,7 +177,6 @@ class _BackgroundEffectState extends State<BackgroundEffect>
           speed: 26,
           controller: _controller,
         ),
-        // 7. Moon layer with subtle rotation.
         Positioned(
           top: 20,
           left: 20,
@@ -202,9 +195,7 @@ class _BackgroundEffectState extends State<BackgroundEffect>
             },
           ),
         ),
-        // 8. Dot effect (pulsing dots).
         DotEffect(controller: _controller),
-        // 9. Rainbow layers.
         Positioned(
           bottom: 100,
           left: 0,
@@ -221,13 +212,11 @@ class _BackgroundEffectState extends State<BackgroundEffect>
             height: 50,
           ),
         ),
-        // MeteorEffect removed.
       ],
     );
   }
 }
 
-/// Shine items (diamond or star) with a small animation.
 enum AnimationType { diamond, star }
 
 class ShineItem extends StatelessWidget {
@@ -290,7 +279,6 @@ class ShineItem extends StatelessWidget {
   }
 }
 
-/// Clouds gently oscillate horizontally.
 class CloudItem extends StatelessWidget {
   final String assetPath;
   final double top;
@@ -330,7 +318,6 @@ class CloudItem extends StatelessWidget {
   }
 }
 
-/// A simple pulsing dot effect.
 class DotEffect extends StatelessWidget {
   final AnimationController controller;
   const DotEffect({required this.controller});
@@ -374,7 +361,6 @@ class DotEffect extends StatelessWidget {
   }
 }
 
-/// Animated top rainbow layer with fade in/out.
 class AnimatedRainbowTop extends StatelessWidget {
   final AnimationController controller;
   const AnimatedRainbowTop({required this.controller});

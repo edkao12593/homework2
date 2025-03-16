@@ -67,7 +67,7 @@ class LatestUpdateBox extends StatelessWidget {
           LatestUpdateHeader(),
           SizedBox(height: 16),
           Container(
-            height: 300, // Shorter height for the overall UI.
+            height: 300,
             child: RawScrollbar(
               controller: scrollController,
               thumbColor: Colors.red,

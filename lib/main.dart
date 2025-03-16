@@ -25,7 +25,6 @@ class CombinedHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // We don't use an AppBar so the entire screen shows our background.
       body: Stack(
         children: [
           // Background layer.
@@ -35,19 +34,15 @@ class CombinedHomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                // Top KV section from topkv.dart.
                 TopKVWidget(),
                 SizedBox(height: 16),
-                // Top Link Icons from top link.dart.
                 TopLinkIcons(),
                 SizedBox(height: 16),
-                // Latest Information from latest inforrmation.dart.
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: latestInfo.LatestUpdateBox(),
                 ),
                 SizedBox(height: 16),
-                // Latest Update from latest update.dart.
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: LatestUpdateSection(),
@@ -64,8 +59,7 @@ class CombinedHomePage extends StatelessWidget {
   }
 }
 
-/// This widget wraps the Latest Update section from latest update.dart.
-/// Since that widget requires a ScrollController, we create one here.
+
 class LatestUpdateSection extends StatefulWidget {
   @override
   _LatestUpdateSectionState createState() => _LatestUpdateSectionState();
