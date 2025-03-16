@@ -7,6 +7,7 @@ import 'top link.dart';
 import 'latest inforrmation.dart' as latest_information;
 import 'latest update.dart' as latest_update;
 import 'customer support.dart' as customer_support;
+import 'facebook.dart' as facebook;
 import 'footer.dart';
 
 void main() {
@@ -38,11 +39,11 @@ class _MainPageState extends State<MainPage> {
   void initState() {
     super.initState();
     _mainScrollController.addListener(() {
-      if (_mainScrollController.offset > 0 && !_showToTopButton) {
+      if (_mainScrollController.offset > 200 && !_showToTopButton) {
         setState(() {
           _showToTopButton = true;
         });
-      } else if (_mainScrollController.offset <= 0 && _showToTopButton) {
+      } else if (_mainScrollController.offset <= 200 && _showToTopButton) {
         setState(() {
           _showToTopButton = false;
         });
@@ -85,6 +86,8 @@ class _MainPageState extends State<MainPage> {
                   scrollController: _latestUpdateScrollController,
                 ),
                 SizedBox(height: 20),
+                facebook.TopFbBox(),
+                SizedBox(height: 20),
                 ChunithmSection(),
                 SizedBox(height: 20),
                 customer_support.CustomerSupportButton(),
@@ -114,7 +117,6 @@ class _MainPageState extends State<MainPage> {
   }
 }
 
-
 class ChunithmSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -130,7 +132,11 @@ class ChunithmSection extends StatelessWidget {
         },
         child: Semantics(
           label: 'CHUNITHM SUN PLUS',
-          child: Image.asset('assets/img/top/btn_chu.png'),
+          child: Image.asset(
+            'assets/img/top/btn_chu.png',
+            width: 150,
+            fit: BoxFit.contain,
+          ),
         ),
       ),
     );
