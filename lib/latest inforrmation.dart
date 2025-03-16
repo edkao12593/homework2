@@ -65,6 +65,14 @@ class _LatestUpdateBoxState extends State<LatestUpdateBox> {
     }
   }
 
+  void _goToPage(int index) {
+    _pageController.animateToPage(
+      index,
+      duration: Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -137,13 +145,16 @@ class _LatestUpdateBoxState extends State<LatestUpdateBox> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(imagePaths.length, (index) {
               bool isActive = _currentPage == index;
-              return Container(
-                margin: EdgeInsets.symmetric(horizontal: 6),
-                width: isActive ? 14 : 10,
-                height: isActive ? 14 : 10,
-                decoration: BoxDecoration(
-                  color: isActive ? Colors.red : Colors.grey,
-                  shape: BoxShape.circle,
+              return GestureDetector(
+                onTap: () => _goToPage(index),
+                child: Container(
+                  margin: EdgeInsets.symmetric(horizontal: 6),
+                  width: isActive ? 14 : 10,
+                  height: isActive ? 14 : 10,
+                  decoration: BoxDecoration(
+                    color: isActive ? Colors.red : Colors.grey,
+                    shape: BoxShape.circle,
+                  ),
                 ),
               );
             }),
@@ -154,7 +165,6 @@ class _LatestUpdateBoxState extends State<LatestUpdateBox> {
     );
   }
 }
-
 
 class LatestUpdateHeader extends StatelessWidget {
   @override
@@ -170,7 +180,7 @@ class LatestUpdateHeader extends StatelessWidget {
               style: TextStyle(
                 fontSize: 28,
                 fontWeight: FontWeight.bold,
-                  color:Color(0xFF0B3871)
+                color: Color(0xFF0B3871),
               ),
             ),
           ),
