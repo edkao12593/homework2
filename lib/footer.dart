@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 void main() => runApp(FooterApp());
 
@@ -28,6 +29,16 @@ class FooterApp extends StatelessWidget {
 }
 
 class FooterWidget extends StatelessWidget {
+  // Helper function to launch URLs.
+  Future<void> _launchURL(String url) async {
+    final uri = Uri.parse(url);
+    if (await canLaunchUrl(uri)) {
+      await launchUrl(uri);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -44,7 +55,7 @@ class FooterWidget extends StatelessWidget {
                   style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.bold,
-                      color:Color(0xFF0B3871)
+                    color: Color(0xFF0B3871),
                   ),
                 ),
                 SizedBox(height: 12),
@@ -53,7 +64,7 @@ class FooterWidget extends StatelessWidget {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        // Handle tap
+                        _launchURL('http://www.facebook.com/share.php?u=https://maimai.sega.com/');
                       },
                       child: Image.asset(
                         'assets/img/footer/footer_sns_fb.png',
@@ -64,7 +75,7 @@ class FooterWidget extends StatelessWidget {
                     SizedBox(width: 12),
                     GestureDetector(
                       onTap: () {
-                        // Handle tap
+                        _launchURL('http://twitter.com/intent/tweet?url=https://maimai.sega.com/&text=maimai%20DX%20International%20ver.%20Official%20Website');
                       },
                       child: Image.asset(
                         'assets/img/footer/footer_sns_x.png',
@@ -75,7 +86,7 @@ class FooterWidget extends StatelessWidget {
                     SizedBox(width: 12),
                     GestureDetector(
                       onTap: () {
-                        // Handle tap
+                        _launchURL('http://line.me/R/msg/text/?maimai%20DX%20International%20ver.%20Official%20Website');
                       },
                       child: Image.asset(
                         'assets/img/footer/footer_sns_li.png',
@@ -96,7 +107,7 @@ class FooterWidget extends StatelessWidget {
                 // External image link.
                 GestureDetector(
                   onTap: () {
-                    // Handle tap
+                    // Additional action can be added here if needed.
                   },
                   child: Image.asset(
                     'assets/img/external.jpg',
@@ -118,7 +129,7 @@ class FooterWidget extends StatelessWidget {
                     SizedBox(width: 16),
                     GestureDetector(
                       onTap: () {
-                        // Handle tap
+                        // Additional action can be added here if needed.
                       },
                       child: Image.asset(
                         'assets/img/footer/footer_logo.png',
